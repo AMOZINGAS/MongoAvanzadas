@@ -1,11 +1,12 @@
 package presentation;
 
+import DAOs.UserDAO;
 import Tools.Pintar;
-import factory.Factory;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import IDAOs.ILogIn;
 import IDAOs.IUserDAO;
+import POJOs.UserPOJO;
+import java.sql.SQLOutput;
 
 public class JFrameLogin extends javax.swing.JFrame {
 
@@ -209,30 +210,33 @@ public class JFrameLogin extends javax.swing.JFrame {
         String user = txtUser.getText();
         String password = txtPassword.getText();
 
-        IUserDAO userSystem = Factory.getUserDAO();
-        ILogIn loginSystem = Factory.getLogIn();
+        IUserDAO userSystem = new UserDAO();
 
         String userType = userSystem.getUserTypeByUserAndPassword(user, password);
 
         if (userType != null) {
             switch (userType) {
-                case "admin":
+                case "ADMINISTRATOR":
 
                     JFrameAdministrator frameAdministrator = new JFrameAdministrator(user, password);
                     frameAdministrator.setVisible(true);
                     this.dispose();
                     break;
-                case "patient":
-                    Long idPatient = loginSystem.validateUser(user, password);
-                    JFrameInitialPatient frameInitialPatient = new JFrameInitialPatient(idPatient);
-                    frameInitialPatient.setVisible(true);
-                    this.dispose();
-                    break;
+                case "PATIENT":
+                    if(userSystem.validateUser(user, password)){
+                        System.out.println("OLAAAA");
+                        UserPOJO userPOJO = userSystem.findUserByUserPassword(user, password);
+                        JFrameInitialPatient frameInitialPatient = new JFrameInitialPatient(userPOJO.getId());
+                        frameInitialPatient.setVisible(true);
+                        this.dispose();
+                        break;
+                        
+                    }
 
-                case "doctor":
-
-                    Long idDoctor = loginSystem.validateUser(user, password);
-                    JFrameInitialMedicos frameInitialMedicos = new JFrameInitialMedicos(idDoctor);
+                case "DOCTOR":
+                    
+                    UserPOJO userPOJO = userSystem.findUserByUserPassword(user, password);
+                    JFrameInitialMedicos frameInitialMedicos = new JFrameInitialMedicos(userPOJO.getId());
                     frameInitialMedicos.setVisible(true);
                     this.dispose();
                     break;
@@ -248,41 +252,41 @@ public class JFrameLogin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrameLogin().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new JFrameLogin().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseña;

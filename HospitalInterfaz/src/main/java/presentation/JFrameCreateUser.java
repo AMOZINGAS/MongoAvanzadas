@@ -1,6 +1,6 @@
 package presentation;
 
-import factory.Factory;
+import DAOs.UserDAO;
 import javax.swing.JOptionPane;
 import IDAOs.IUserDAO;
 import DTOs.NewUserDTO;
@@ -38,7 +38,7 @@ public class JFrameCreateUser extends javax.swing.JFrame {
         Hospital_General = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         Usuario4 = new javax.swing.JLabel();
-        txtUserName = new javax.swing.JTextField();
+        txtCurp = new javax.swing.JTextField();
         Usuario = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnCancel = new javax.swing.JButton();
@@ -87,7 +87,7 @@ public class JFrameCreateUser extends javax.swing.JFrame {
         Usuario4.setText("Password");
 
         Usuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Usuario.setText("Username");
+        Usuario.setText("Curp");
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -103,10 +103,7 @@ public class JFrameCreateUser extends javax.swing.JFrame {
             .addComponent(FondoAzul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(FondoPanelLayout.createSequentialGroup()
                 .addGap(250, 250, 250)
-                .addComponent(Usuario))
-            .addGroup(FondoPanelLayout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtCurp, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(FondoPanelLayout.createSequentialGroup()
                 .addGap(250, 250, 250)
                 .addComponent(Usuario4))
@@ -121,6 +118,9 @@ public class JFrameCreateUser extends javax.swing.JFrame {
             .addGroup(FondoPanelLayout.createSequentialGroup()
                 .addGap(271, 271, 271)
                 .addComponent(Iniciar_Sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(FondoPanelLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(Usuario))
         );
         FondoPanelLayout.setVerticalGroup(
             FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +131,7 @@ public class JFrameCreateUser extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addComponent(Usuario)
                 .addGap(1, 1, 1)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCurp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(Usuario4)
                 .addGap(11, 11, 11)
@@ -164,11 +164,11 @@ public class JFrameCreateUser extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         NewUserDTO userDTO = new NewUserDTO();
-        userDTO.setUser(txtUserName.getText());
+        userDTO.setCurp(txtCurp.getText());
         userDTO.setPassword(txtPassword.getText());
 
-        IUserDAO userDAO = Factory.getUserDAO();
-        if (userDAO.userExist(userDTO.getUser())) {
+        IUserDAO userDAO = new UserDAO();
+        if (userDAO.existUser(userDTO.getCurp())) {
 
             JOptionPane.showMessageDialog(this, "The username is already in use");
 
@@ -195,7 +195,7 @@ public class JFrameCreateUser extends javax.swing.JFrame {
             login.setVisible(true);
             this.dispose();
         } else {
-            JFrameAdministrator frameAdministrator = new JFrameAdministrator(userDTOAdmin.getUser(), userDTOAdmin.getPassword());
+            JFrameAdministrator frameAdministrator = new JFrameAdministrator(userDTOAdmin.getCurp(), userDTOAdmin.getPassword());
             frameAdministrator.setVisible(true);
             this.dispose();
         }
@@ -245,7 +245,7 @@ public class JFrameCreateUser extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario4;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JTextField txtCurp;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

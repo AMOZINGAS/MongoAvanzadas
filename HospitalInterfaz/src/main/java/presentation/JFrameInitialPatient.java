@@ -1,30 +1,32 @@
 package presentation;
 
+import DAOs.AppointmentManager;
+import DAOs.PatientDAO;
 import DTOs.ExistentAppointmentDTO;
 import IDAOs.IAppointmentManager;
-import factory.Factory;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import DTOs.ExistentPatientDTO;
 import IDAOs.IPatientDAO;
+import org.bson.types.ObjectId;
 
 
 public class JFrameInitialPatient extends javax.swing.JFrame {
 
-    private final Long idPatient;
+    private final ObjectId idPatient;
     private ExistentPatientDTO paciente;
-    private ArrayList<Long> listaDeLongs = new ArrayList<>();
+    private ArrayList<ObjectId> listaDeLongs = new ArrayList<>();
 
     /**
      * Creates new form InicioPaciente
      */
-    public JFrameInitialPatient(Long idPatient) {
+    public JFrameInitialPatient(ObjectId idPatient) {
         this.idPatient = idPatient;
 
         initComponents();
-        IPatientDAO patientSystem = Factory.getPatientDAO();
+        IPatientDAO patientSystem = new PatientDAO();
         paciente = patientSystem.EntityToDto(patientSystem.serachPatientById(idPatient));
         cargarCitasPaciente();
     }
@@ -33,7 +35,7 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
         DefaultTableModel tblModel = (DefaultTableModel) jTableAppointment.getModel();
         tblModel.setRowCount(0); // Limpiar la tabla antes de cargar los nuevos datos
 
-        IAppointmentManager appointmentManager = Factory.getAppointmentManager();
+        IAppointmentManager appointmentManager = new AppointmentManager();
 
         List<ExistentAppointmentDTO> appointments = appointmentManager.findAppointmentsByPatientId(idPatient);
 
@@ -163,12 +165,12 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        IAppointmentManager appointmentManager = Factory.getAppointmentManager();
+        IAppointmentManager appointmentManager = new AppointmentManager();
         int selectedIndex = jTableAppointment.getSelectedRow();
 
         // Asegurarse de que la fila seleccionada esté dentro de los límites
         if (selectedIndex >= 0 && selectedIndex < listaDeLongs.size()) {
-            Long valorCorrespondiente = listaDeLongs.get(selectedIndex);
+            ObjectId valorCorrespondiente = listaDeLongs.get(selectedIndex);
 
             if(appointmentManager.cancelAppointment(valorCorrespondiente)){
                 

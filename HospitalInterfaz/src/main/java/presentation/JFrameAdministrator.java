@@ -1,12 +1,13 @@
 package presentation;
 
-import JPAEntities.UserAdministrator;
-import JPAEntities.UserEntity;
+import DAOs.AdministratorDAO;
+import DAOs.UserDAO;
 import IDAOs.IAdministratorDAO;
 import DTOs.NewAdministratorDTO;
-import factory.Factory;
 import IDAOs.IUserDAO;
 import DTOs.NewUserDTO;
+import POJOs.AdministratorPOJO;
+import POJOs.UserPOJO;
 
 
 public class JFrameAdministrator extends javax.swing.JFrame {
@@ -19,12 +20,13 @@ public class JFrameAdministrator extends javax.swing.JFrame {
     public JFrameAdministrator(String user, String password) {
         initComponents();
         NewAdministratorDTO newAdministratorDTO = new NewAdministratorDTO();
-        IUserDAO userDAO = Factory.getUserDAO();
-        UserEntity userEntity = userDAO.findUserByUserPassword(user, password);
-        IAdministratorDAO administratorDAO = Factory.getAdministratorDAO();
-        UserAdministrator userAdministrator = administratorDAO.findAdministratorById(userEntity.getId());
-        newAdministratorDTO.setName(userAdministrator.getAdministrator().getNames());
-        this.userDTOAdmin = new NewUserDTO(user, password, newAdministratorDTO);
+        IUserDAO userDAO = new UserDAO();
+        UserPOJO userEntity = userDAO.findUserByUserPassword(user, password);
+        IAdministratorDAO administratorDAO = new AdministratorDAO();
+        
+        AdministratorPOJO userAdministrator = administratorDAO.findAdministratorById(userEntity.getId());
+        newAdministratorDTO.setName(userAdministrator.getName());
+        this.userDTOAdmin = new NewUserDTO(user, password, "ADMINISTRATOR", userAdministrator.getId());
 
     }
 

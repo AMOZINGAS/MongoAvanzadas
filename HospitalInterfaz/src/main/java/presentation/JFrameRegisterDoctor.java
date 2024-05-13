@@ -1,11 +1,13 @@
 package presentation;
 
-import factory.Factory;
-import doctor.system.IDoctorDAO;
+import DAOs.DoctorDAO;
+import DAOs.UserDAO;
 import DTOs.NewDoctorDTO;
 import javax.swing.JOptionPane;
 import IDAOs.IUserDAO;
 import DTOs.NewUserDTO;
+import IDAOs.IDoctorDAO;
+import POJOs.DoctorPOJO;
 
 public class JFrameRegisterDoctor extends javax.swing.JFrame {
 
@@ -205,7 +207,7 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
 
-        JFrameAdministrator frameAdministrator = new JFrameAdministrator(userDTOAdmin.getUser(), userDTOAdmin.getPassword());
+        JFrameAdministrator frameAdministrator = new JFrameAdministrator(userDTOAdmin.getCurp(), userDTOAdmin.getPassword());
         frameAdministrator.setVisible(true);
         this.dispose();
 
@@ -240,21 +242,21 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
 
             doctorDTO.setSpecialization(specialization);
 
-            IDoctorDAO doctorDAO = Factory.getDoctorDAO();
+            IDoctorDAO doctorDAO = new DoctorDAO();
 
-            IUserDAO userDAO = Factory.getUserDAO();
+            IUserDAO userDAO = new UserDAO();
 
-            if (userDAO.userExist(user)) {
+            if (userDAO.existUser(user)) {
 
                 JOptionPane.showMessageDialog(this, "The username is already in use");
 
             } else {
 
                 if (doctorDAO.searchByMedicart(doctorDTO.getMedicalCart()) == null) {
-                    doctorDAO.registerDoctor(doctorDTO);
-                    NewUserDTO userDTO = new NewUserDTO(user, password, doctorDTO);
-                    userDAO.registerDoctorUser(doctorDTO, userDTO);
-                    JFrameAdministrator frameAdministrator = new JFrameAdministrator(userDTOAdmin.getUser(), userDTOAdmin.getPassword());
+                    doctorDAO.registerDoctor(doctorDAO.DtoToEntity(doctorDTO));
+                    DoctorPOJO doctorPOJO = doctorDAO.searchByMedicart(doctorDTO.getMedicalCart());
+                    NewUserDTO userDTO = new NewUserDTO(user, password, "DOCTOR", doctorPOJO.getId());
+                    JFrameAdministrator frameAdministrator = new JFrameAdministrator(userDTOAdmin.getCurp(), userDTOAdmin.getPassword());
                     frameAdministrator.setVisible(true);
                     this.dispose();
                 } else {

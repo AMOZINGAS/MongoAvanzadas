@@ -1,7 +1,8 @@
 package presentation;
 
+import DAOs.PatientDAO;
+import DAOs.UserDAO;
 import com.toedter.calendar.JDateChooser;
-import factory.Factory;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -11,6 +12,7 @@ import IDAOs.IPatientDAO;
 import DTOs.NewPatientDTO;
 import IDAOs.IUserDAO;
 import DTOs.NewUserDTO;
+import POJOs.PatientPOJO;
 
 public class JFrameRegisterPatient extends javax.swing.JFrame {
 
@@ -406,6 +408,7 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
         String street = txtStreet.getText();
         Calendar birthDate = dateChooser.getCalendar();
         String sex = "";
+        
         if (cbxMale.isSelected()) {
             sex = "M";
         } else if (cbxFamele.isSelected()) {
@@ -432,12 +435,15 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
 
             try {
                 //Creamos paciente nuevo
-                IPatientDAO patientSystem = Factory.getPatientDAO();
-                patientSystem.registerPatient(newPatientDTO);
-
-                IUserDAO userSystem = Factory.getUserDAO();
-                userDTO.setPatientDTO(newPatientDTO);
-                userSystem.registerUser(userDTO);
+                IPatientDAO patientSystem = new PatientDAO();
+                PatientPOJO patientPOJO = patientSystem.DtoToEntity(newPatientDTO);
+                patientSystem.registerPatient(patientPOJO);
+                
+                IUserDAO userSystem = new UserDAO();
+                PatientPOJO patientPOJO1 = patientSystem.searchPatientByCurp(patientPOJO.getCurp());
+                userDTO.setType("PATIENT");
+                userDTO.setIdOwner(patientPOJO1.getId());
+                userSystem.registerUser(userSystem.DtoToEntity(userDTO));
 
             } catch (Exception ex) {
                 Logger.getLogger(JFrameRegisterPatient.class.getName()).log(Level.SEVERE, "Error al persistir", ex);
@@ -448,7 +454,7 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
                 frameLogin.setVisible(true);
                 this.dispose();
             } else {
-                JFrameAdministrator admin = new JFrameAdministrator(userDTOAdmin.getUser(), userDTOAdmin.getPassword());
+                JFrameAdministrator admin = new JFrameAdministrator(userDTOAdmin.getCurp(), userDTOAdmin.getPassword());
                 admin.setVisible(true);
                 this.dispose();
             }

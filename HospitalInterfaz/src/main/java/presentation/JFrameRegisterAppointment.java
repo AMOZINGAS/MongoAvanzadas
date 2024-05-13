@@ -1,14 +1,12 @@
 package presentation;
 
-import JPAEntities.DoctorEntity;
-import JPAEntities.PatientEntity;
-import JPAEntities.Specialization;
 import Controlers.AppointmentStatus;
+import DAOs.AppointmentManager;
+import DAOs.DoctorDAO;
+import DAOs.PatientDAO;
 import IDAOs.IAppointmentManager;
 import DTOs.NewAppointmentDTO;
 import DTOs.ExistentDoctorDTO;
-import doctor.system.IDoctorDAO;
-import factory.Factory;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,9 +14,12 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import DTOs.ExistentPatientDTO;
+import IDAOs.IDoctorDAO;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Point;
 import IDAOs.IPatientDAO;
+import POJOs.DoctorPOJO;
+import POJOs.PatientPOJO;
 
 public class JFrameRegisterAppointment extends javax.swing.JFrame {
 
@@ -36,15 +37,12 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
         this.doctorP1 = doctorDTO;
         initComponents();
         dateChooser();
-//        limitarFecha();
-        
         lblSpecilaization.setVisible(false);
         cbxSpecialization.setVisible(false);
         lblDate.setVisible(false);
         cmbDoctor.setVisible(false);
         lblDoctors1.setVisible(false);
         lblPatient.setText("Patients");
-        
         limitDaysSelected = new ArrayList<>();
         patientList();
         for(int i = 0; i < cmbPatient.getItemCount(); i ++){
@@ -56,12 +54,9 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
             }
             
         }
-//        cmbPatient.setSelectedItem(patientDTO);
         txtNota.setText(appointmentDTO.getNote());
         dateChooser.setCalendar(appointmentDTO.getAppointmentDate());
         cmbTime.setSelectedIndex(indexComboBox(dateChooser.getCalendar().get(Calendar.HOUR_OF_DAY)));
-        
-
     }
     
 
@@ -84,7 +79,7 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
         lblPatient.setVisible(false);
         for(int i = 0; i < cbxSpecialization.getItemCount(); i ++){
             cbxSpecialization.setSelectedIndex(i);
-            Specialization specialization = Specialization.StringToEnum((String)cbxSpecialization.getSelectedItem());
+            String specialization = (String)cbxSpecialization.getSelectedItem();
             if(appointmentDTO.getDoctor().getSpecialization().equals(specialization)){
                 
                 cbxSpecialization.setSelectedIndex(i);
@@ -135,7 +130,7 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
 
     public void patientList() {
 
-        IPatientDAO patientDAO = Factory.getPatientDAO();
+        IPatientDAO patientDAO = new PatientDAO();
         List<ExistentPatientDTO> patientList = patientDAO.findAllPatient();
         cmbPatient.removeAllItems();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
@@ -476,7 +471,7 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
             NewAppointmentDTO newAppointmentDTO = new NewAppointmentDTO();
             newAppointmentDTO.setDoctor(existentDoctorDTO);
             newAppointmentDTO.setPatient(paciente);
-            newAppointmentDTO.setStatus(AppointmentStatus.ACTIVE);
+            newAppointmentDTO.setStatus("ACTIVE");
             newAppointmentDTO.setAppointmentDate(dateChooser.getCalendar());
             newAppointmentDTO.setNote(txtNota.getText());
 
@@ -490,7 +485,7 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
             NewAppointmentDTO newAppointmentDTO = new NewAppointmentDTO();
             newAppointmentDTO.setDoctor(doctorP1);
             newAppointmentDTO.setPatient(existentPateintDTO);
-            newAppointmentDTO.setStatus(AppointmentStatus.ACTIVE);
+            newAppointmentDTO.setStatus("ACTIVE");
             newAppointmentDTO.setAppointmentDate(dateChooser.getCalendar());
             newAppointmentDTO.setNote(txtNota.getText());
 
@@ -536,11 +531,11 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
     private void cbxSpecializationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSpecializationActionPerformed
 
         if (doctorP1 == null) {
-            Specialization specializationEnum = Specialization.PEDIATRIC;
-            IDoctorDAO doctorDAO = Factory.getDoctorDAO();
+            
+            IDoctorDAO doctorDAO = new DoctorDAO();
 
             String selectedSpecialization = (String) cbxSpecialization.getSelectedItem();
-            doctores = doctorDAO.searchBySpecialization(specializationEnum.StringToEnum(selectedSpecialization));
+            doctores = doctorDAO.searchBySpecialization(selectedSpecialization);
             cmbDoctor.removeAllItems();
             DefaultComboBoxModel model = new DefaultComboBoxModel();
             cmbDoctor.setModel(model);
@@ -553,12 +548,12 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
 
     public void limitDaysParner(){
         
-        IAppointmentManager appointmentManager = Factory.getAppointmentManager();
+        IAppointmentManager appointmentManager = new AppointmentManager();
         
         if(doctorP1 == null){
             
-            IPatientDAO patientDAO = Factory.getPatientDAO();
-            PatientEntity patientEntity = patientDAO.ExistentDtoToEntity(paciente);
+            IPatientDAO patientDAO = new PatientDAO();
+            PatientPOJO patientEntity = patientDAO.ExistentDtoToEntity(paciente);
             if(appointmentManager.findLimitDays(patientEntity) != null){
                 
                 limitDaysParner = appointmentManager.findLimitDays(patientEntity);
@@ -567,8 +562,8 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
             
         }else{
             
-            IDoctorDAO doctorDAO = Factory.getDoctorDAO();
-            DoctorEntity doctorEntity = doctorDAO.ExistentDtoToEntity(doctorP1);
+            IDoctorDAO doctorDAO = new DoctorDAO();
+            DoctorPOJO doctorEntity = doctorDAO.ExistentDtoToEntity(doctorP1);
             if(appointmentManager.findLimitDays(doctorEntity) != null){
                 
                 limitDaysParner = appointmentManager.findLimitDays(doctorEntity);
@@ -581,18 +576,18 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
     
     public void limitDaysSelected() {
 
-        IAppointmentManager appointmentManager = Factory.getAppointmentManager();
+        IAppointmentManager appointmentManager = new AppointmentManager();
         if (doctorP1 == null) {
-            IDoctorDAO doctorDAO = Factory.getDoctorDAO();
+            IDoctorDAO doctorDAO = new DoctorDAO();
             ExistentDoctorDTO existentDoctor = (ExistentDoctorDTO) cmbDoctor.getSelectedItem();
-            DoctorEntity doctorEntity = doctorDAO.ExistentDtoToEntity(existentDoctor);
+            DoctorPOJO doctorEntity = doctorDAO.ExistentDtoToEntity(existentDoctor);
             if (appointmentManager.findLimitDays(doctorEntity) != null) {
                 limitDaysSelected = appointmentManager.findLimitDays(doctorEntity);
             }
         } else {
-            IPatientDAO patientDAO = Factory.getPatientDAO();
+            IPatientDAO patientDAO = new PatientDAO();
             ExistentPatientDTO existentPatientDTO = (ExistentPatientDTO) cmbPatient.getSelectedItem();
-            PatientEntity patientEntity = patientDAO.findPatient(existentPatientDTO.getId());
+            PatientPOJO patientEntity = patientDAO.findPatient(existentPatientDTO.getId());
             if (appointmentManager.findLimitDays(patientEntity) != null) {
                 limitDaysSelected = appointmentManager.findLimitDays(patientEntity);
             }

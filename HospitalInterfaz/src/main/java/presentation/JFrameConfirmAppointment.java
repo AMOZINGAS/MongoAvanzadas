@@ -1,9 +1,9 @@
 package presentation;
 
+import DAOs.AppointmentManager;
 import IDAOs.IAppointmentManager;
 import DTOs.NewAppointmentDTO;
 import DTOs.ExistentDoctorDTO;
-import factory.Factory;
 import java.util.Calendar;
 import DTOs.ExistentPatientDTO;
 
@@ -167,9 +167,9 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
-        IAppointmentManager appointmentManager = Factory.getAppointmentManager();
+        IAppointmentManager appointmentManager = new AppointmentManager();
         System.out.println(newAppointmentDTO.getAppointmentDate().get(Calendar.HOUR));
-        appointmentManager.createAppointment(newAppointmentDTO);
+        appointmentManager.createAppointment(appointmentManager.DtoToEntity(newAppointmentDTO));
 
         if (doctorDTO == null) {
             JFrameInitialPatient frameInitialPatient = new JFrameInitialPatient(newAppointmentDTO.getPatient().getId());
