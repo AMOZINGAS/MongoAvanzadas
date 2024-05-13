@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import connection.ConnectionDB;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -22,7 +23,7 @@ public class UserDAO implements IUserDAO {
     public UserDAO(){
         
         dataBase = ConnectionDB.createConnection();
-        collection = dataBase.getCollection("Administrator", UserPOJO.class);
+        collection = dataBase.getCollection("User", UserPOJO.class);
         
     }
     
@@ -39,13 +40,14 @@ public class UserDAO implements IUserDAO {
         UserPOJO userPOJO = new UserPOJO();
         userPOJO.setCurp(userDTO.getCurp());
         userPOJO.setPassword(userDTO.getPassword());
-        userPOJO.setType(userPOJO.getType());
+        userPOJO.setType(userDTO.getType());
+        userPOJO.setIdPatient(userDTO.getIdOwner());
         return userPOJO;
         
     }
 
     @Override
-    public String getUserType(Long userId) {
+    public String getUserType(ObjectId userId) {
     
         UserPOJO findUser = collection.find(Filters.eq("_id", userId)).first();
             
@@ -61,7 +63,7 @@ public class UserDAO implements IUserDAO {
     @Override
     public boolean validateUser(String user, String password) {
     
-        UserPOJO userPOJO = collection.find(Filters.eq("username", user)).first();
+        UserPOJO userPOJO = collection.find(Filters.eq("curp", user)).first();
 
             if (userPOJO != null) {
                 // Obtener la contraseña almacenada en la base de datos
@@ -92,7 +94,7 @@ public class UserDAO implements IUserDAO {
     @Override
     public UserPOJO findUserByUserPassword(String user, String password) {
     
-        UserPOJO userPOJO = collection.find(Filters.eq("username", user)).first();
+        UserPOJO userPOJO = collection.find(Filters.eq("curp", user)).first();
 
         if (userPOJO != null) {
             // Obtener la contraseña almacenada en la base de datos
@@ -123,7 +125,7 @@ public class UserDAO implements IUserDAO {
     @Override
     public String getUserTypeByUserAndPassword(String user, String password) {
     
-        UserPOJO userPOJO = collection.find(Filters.eq("username", user)).first();
+        UserPOJO userPOJO = collection.find(Filters.eq("curp", user)).first();
 
         if (userPOJO != null) {
             // Obtener la contraseña almacenada en la base de datos
@@ -150,5 +152,24 @@ public class UserDAO implements IUserDAO {
         }
         
     } 
+
+    @Override
+    public boolean existUser(String user) {
+    
+        UserPOJO userPOJO = collection.find(Filters.eq("curp", user)).first();
+
+            if (userPOJO != null) {
+                
+                return true;
+                
+            } else {
+
+                return false;
+            
+            }
+    
+    }
+    
+    
     
 }

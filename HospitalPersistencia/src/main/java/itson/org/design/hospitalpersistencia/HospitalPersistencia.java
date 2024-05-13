@@ -1,5 +1,8 @@
 package itson.org.design.hospitalpersistencia;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author Laboratorios
@@ -8,6 +11,11 @@ public class HospitalPersistencia {
 
     public static void main(String[] args) {
 
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.getTime();
+//        Date date = new Date();
+//        calendar.setTime(date);
+        
         /*
         //Probando que guarde adecuadamente
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("connectionPU");

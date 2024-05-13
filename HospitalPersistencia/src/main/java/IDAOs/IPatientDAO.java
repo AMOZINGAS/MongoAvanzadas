@@ -4,6 +4,7 @@ import POJOs.PatientPOJO;
 import DTOs.NewPatientDTO;
 import DTOs.ExistentPatientDTO;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -13,7 +14,7 @@ public interface IPatientDAO {
 
     public void registerPatient(PatientPOJO patientPOJO);
 
-    public PatientPOJO serachPatientById(Long idPatient);
+    public PatientPOJO serachPatientById(ObjectId idPatient);
 
     public PatientPOJO searchPatientByCurp(String curp);
 
@@ -25,6 +26,6 @@ public interface IPatientDAO {
     
     public List<ExistentPatientDTO> findAllPatient();
     
-    public PatientPOJO findPatient(Long id);
+    public PatientPOJO findPatient(ObjectId id);
     
 }

@@ -4,13 +4,15 @@
  */
 package POJOs;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author PC
  */
 public class DoctorPOJO {
     
-    private Object id;
+    private ObjectId id;
     private String names;
     private String lastName;
     private String secondName;
@@ -20,7 +22,7 @@ public class DoctorPOJO {
     public DoctorPOJO() {
     }
 
-    public DoctorPOJO(Object id, String names, String lastName, String secondName, String medicalLicense, String specialization) {
+    public DoctorPOJO(ObjectId id, String names, String lastName, String secondName, String medicalLicense, String specialization) {
         this.id = id;
         this.names = names;
         this.lastName = lastName;
@@ -29,11 +31,11 @@ public class DoctorPOJO {
         this.specialization = specialization;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

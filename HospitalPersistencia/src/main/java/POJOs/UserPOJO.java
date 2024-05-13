@@ -4,32 +4,43 @@
  */
 package POJOs;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author PC
  */
 public class UserPOJO {
     
-    private Object id;
+    private ObjectId id;
     private String type;
     private String password;
     private String curp;
+    private ObjectId idPatient;
 
     public UserPOJO() {
     }
 
-    public UserPOJO(Object id, String type, String password, String curp) {
+    public UserPOJO(ObjectId id, String type, String password, String curp, ObjectId idPatient) {
         this.id = id;
         this.type = type;
         this.password = password;
         this.curp = curp;
     }
 
-    public Object getId() {
+    public ObjectId getIdPatient() {
+        return idPatient;
+    }
+
+    public void setIdPatient(ObjectId idPatient) {
+        this.idPatient = idPatient;
+    }
+
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

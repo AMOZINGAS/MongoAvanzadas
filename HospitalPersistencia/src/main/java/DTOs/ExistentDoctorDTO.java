@@ -1,10 +1,11 @@
 package DTOs;
 
 import java.util.Objects;
+import org.bson.types.ObjectId;
 
 public class ExistentDoctorDTO {
 
-    private Object id;
+    private ObjectId id;
     private String name;
     private String firstName;
     private String SecondName;
@@ -14,7 +15,7 @@ public class ExistentDoctorDTO {
     public ExistentDoctorDTO() {
     }
 
-    public ExistentDoctorDTO(Object id, String name, String firstName, String SecondName, String specialization, String medicalCart) {
+    public ExistentDoctorDTO(ObjectId id, String name, String firstName, String SecondName, String specialization, String medicalCart) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
@@ -23,11 +24,11 @@ public class ExistentDoctorDTO {
         this.medicalCart = medicalCart;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

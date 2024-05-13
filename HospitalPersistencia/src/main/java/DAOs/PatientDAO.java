@@ -10,7 +10,9 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import connection.ConnectionDB;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 public class PatientDAO implements IPatientDAO {
 
@@ -20,7 +22,7 @@ public class PatientDAO implements IPatientDAO {
     public PatientDAO (){
         
         dataBase = ConnectionDB.createConnection();
-        collection = dataBase.getCollection("Administrator", PatientPOJO.class);
+        collection = dataBase.getCollection("Patient", PatientPOJO.class);
         
     }
     
@@ -32,7 +34,7 @@ public class PatientDAO implements IPatientDAO {
     }
 
     @Override
-    public PatientPOJO serachPatientById(Long idPatient) {
+    public PatientPOJO serachPatientById(ObjectId idPatient) {
     
         PatientPOJO findAppointment = collection.find(Filters.eq("_id", idPatient)).first();
 
@@ -77,7 +79,9 @@ public class PatientDAO implements IPatientDAO {
         existentPatientDTO.setSecondName(patientPOJO.getSecondName());
         existentPatientDTO.setCurp(patientPOJO.getCurp());
         existentPatientDTO.setPhone(patientPOJO.getPhone());
-        existentPatientDTO.setBirthDate(patientPOJO.getBirthDate());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(patientPOJO.getBirthDate());
+        existentPatientDTO.setBirthDate(calendar);
         existentPatientDTO.setSex(patientPOJO.getSex());
         existentPatientDTO.setStreet(patientPOJO.getStreet());
         existentPatientDTO.setZipCode(patientPOJO.getZipCode());
@@ -96,7 +100,7 @@ public class PatientDAO implements IPatientDAO {
         patientPOJO.setSecondName(patient.getSecondName());
         patientPOJO.setCurp(patient.getCurp());
         patientPOJO.setPhone(patient.getPhone());
-        patientPOJO.setBirthDate(patient.getBirthDate());
+        patientPOJO.setBirthDate(patient.getBirthDate().getTime());
         patientPOJO.setSex(patient.getSex());
         patientPOJO.setStreet(patient.getStreet());
         patientPOJO.setZipCode(patient.getZipCode());
@@ -115,7 +119,7 @@ public class PatientDAO implements IPatientDAO {
         patientPOJO.setSecondName(existentPatientDTO.getSecondName());
         patientPOJO.setCurp(existentPatientDTO.getCurp());
         patientPOJO.setPhone(existentPatientDTO.getPhone());
-        patientPOJO.setBirthDate(existentPatientDTO.getBirthDate());
+        patientPOJO.setBirthDate(existentPatientDTO.getBirthDate().getTime());
         patientPOJO.setSex(existentPatientDTO.getSex());
         patientPOJO.setStreet(existentPatientDTO.getStreet());
         patientPOJO.setZipCode(existentPatientDTO.getZipCode());
@@ -141,7 +145,7 @@ public class PatientDAO implements IPatientDAO {
     }
 
     @Override
-    public PatientPOJO findPatient(Long id) {
+    public PatientPOJO findPatient(ObjectId id) {
     
         PatientPOJO findAppointment = collection.find(Filters.eq("_id", id)).first();
 

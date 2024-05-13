@@ -1,23 +1,25 @@
 package DTOs;
 
+import org.bson.types.ObjectId;
+
 public class ExistentAdministratorDTO {
 
-    private Object id;
+    private ObjectId id;
     private String name;
 
     public ExistentAdministratorDTO() {
     }
 
-    public ExistentAdministratorDTO(Object id, String name) {
+    public ExistentAdministratorDTO(ObjectId id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

@@ -17,10 +17,12 @@ import com.mongodb.client.model.Updates;
 import connection.ConnectionDB;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
-public abstract class AppointmentManager implements IAppointmentManager {
+public class AppointmentManager implements IAppointmentManager {
 
     private final MongoDatabase dataBase;
     private final MongoCollection<AppointmentPOJO> collection;
@@ -43,7 +45,7 @@ public abstract class AppointmentManager implements IAppointmentManager {
     public AppointmentPOJO DtoToEntity(NewAppointmentDTO newAppointmentDTO) {
     
         AppointmentPOJO appointmentPOJO = new AppointmentPOJO();
-        appointmentPOJO.setDate(newAppointmentDTO.getAppointmentDate());
+        appointmentPOJO.setDate(newAppointmentDTO.getAppointmentDate().getTime());
         
         IDoctorDAO doctorDAO = new DoctorDAO();
         appointmentPOJO.setIdDoctor(doctorDAO.ExistentDtoToEntity(newAppointmentDTO.getDoctor()));
@@ -62,7 +64,9 @@ public abstract class AppointmentManager implements IAppointmentManager {
            List<Calendar> dateList = new ArrayList<>();
            for(AppointmentPOJO appointment: appointments){
                
-               dateList.add(appointment.getDate());
+               Calendar calendar = Calendar.getInstance();
+               calendar.setTime(appointment.getDate());
+               dateList.add(calendar);
                
            }
            
@@ -77,7 +81,9 @@ public abstract class AppointmentManager implements IAppointmentManager {
            List<Calendar> dateList = new ArrayList<>();
            for(AppointmentPOJO appointment: appointments){
                
-               dateList.add(appointment.getDate());
+               Calendar calendar = Calendar.getInstance();
+               calendar.setTime(appointment.getDate());
+               dateList.add(calendar);
                
            }
            
@@ -86,7 +92,7 @@ public abstract class AppointmentManager implements IAppointmentManager {
     }
 
     @Override
-    public List<ExistentAppointmentDTO> findAppointmentsByPatientId(Long patientId) {
+    public List<ExistentAppointmentDTO> findAppointmentsByPatientId(ObjectId patientId) {
     
         FindIterable<AppointmentPOJO> appointmentByPatient = collection.find(Filters.eq("patient", patientId));
         List<ExistentAppointmentDTO> DTOList = new ArrayList<>();
@@ -104,7 +110,9 @@ public abstract class AppointmentManager implements IAppointmentManager {
     public ExistentAppointmentDTO convertToDTO(AppointmentPOJO appointmentPOJO) {
     
         ExistentAppointmentDTO appointmentDTO = new ExistentAppointmentDTO();
-        appointmentDTO.setAppointmentDate(appointmentPOJO.getDate());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(appointmentPOJO.getDate());
+        appointmentDTO.setAppointmentDate(calendar);
         IDoctorDAO doctorDAO = new DoctorDAO();
         appointmentDTO.setDoctor(doctorDAO.EntityToDTO(appointmentPOJO.getIdDoctor()));
         appointmentDTO.setId(appointmentPOJO.getId());
@@ -118,7 +126,7 @@ public abstract class AppointmentManager implements IAppointmentManager {
     }
 
     @Override
-    public List<ExistentAppointmentDTO> findAppointmentsByDoctorId(Long doctorId) {
+    public List<ExistentAppointmentDTO> findAppointmentsByDoctorId(ObjectId doctorId) {
     
         FindIterable<AppointmentPOJO> appointmentByPatient = collection.find(Filters.eq("doctor", doctorId));
         List<ExistentAppointmentDTO> DTOList = new ArrayList<>();
@@ -133,7 +141,7 @@ public abstract class AppointmentManager implements IAppointmentManager {
     }
 
     @Override
-    public boolean cancelAppointment(Long id) {
+    public boolean cancelAppointment(ObjectId id) {
     
         collection.updateOne(Filters.eq("_id", id), Updates.set("status", "CANCELLED"));
         return true;
@@ -141,7 +149,7 @@ public abstract class AppointmentManager implements IAppointmentManager {
     }
 
     @Override
-    public ExistentAppointmentDTO findAppointmentById(Long id) {
+    public ExistentAppointmentDTO findAppointmentById(ObjectId id) {
     
         AppointmentPOJO findAppointment = collection.find(Filters.eq("_id", id)).first();
 

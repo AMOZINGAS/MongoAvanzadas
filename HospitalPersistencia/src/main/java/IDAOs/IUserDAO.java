@@ -2,6 +2,7 @@ package IDAOs;
 
 import POJOs.UserPOJO;
 import DTOs.NewUserDTO;
+import org.bson.types.ObjectId;
 
 public interface IUserDAO {
 
@@ -9,7 +10,7 @@ public interface IUserDAO {
 
     public UserPOJO DtoToEntity(NewUserDTO userDTO);
     
-    public String getUserType(Long userId);
+    public String getUserType(ObjectId userId);
 
     public boolean validateUser(String user, String password);
 
@@ -17,4 +18,6 @@ public interface IUserDAO {
 
     public String getUserTypeByUserAndPassword(String user, String password);
 
+    public boolean existUser(String user);
+    
 }

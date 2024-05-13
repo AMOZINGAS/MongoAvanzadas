@@ -12,6 +12,7 @@ import com.mongodb.client.model.Filters;
 import connection.ConnectionDB;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 public class DoctorDAO implements IDoctorDAO {
 
@@ -21,7 +22,7 @@ public class DoctorDAO implements IDoctorDAO {
     public DoctorDAO(){
         
         dataBase = ConnectionDB.createConnection();
-        collection = dataBase.getCollection("Administrator", DoctorPOJO.class);
+        collection = dataBase.getCollection("Doctor", DoctorPOJO.class);
         
     }
     
@@ -60,7 +61,7 @@ public class DoctorDAO implements IDoctorDAO {
     }
 
     @Override
-    public DoctorPOJO serachById(Long id) {
+    public DoctorPOJO serachById(ObjectId id) {
     
         DoctorPOJO findAppointment = collection.find(Filters.eq("_id", id)).first();
 

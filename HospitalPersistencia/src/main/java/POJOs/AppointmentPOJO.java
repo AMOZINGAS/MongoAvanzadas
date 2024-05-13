@@ -5,6 +5,8 @@
 package POJOs;
 
 import java.util.Calendar;
+import java.util.Date;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -12,9 +14,9 @@ import java.util.Calendar;
  */
 public class AppointmentPOJO {
     
-    private Object id;
+    private ObjectId id;
     private String status;
-    private Calendar date;
+    private Date date;
     private String note;
     private DoctorPOJO idDoctor;
     private PatientPOJO idPatient;
@@ -22,7 +24,7 @@ public class AppointmentPOJO {
     public AppointmentPOJO() {
     }
 
-    public AppointmentPOJO(Object id, String status, Calendar date, String note, DoctorPOJO idDoctor, PatientPOJO idPatient) {
+    public AppointmentPOJO(ObjectId id, String status, Date date, String note, DoctorPOJO idDoctor, PatientPOJO idPatient) {
         this.id = id;
         this.status = status;
         this.date = date;
@@ -31,11 +33,11 @@ public class AppointmentPOJO {
         this.idPatient = idPatient;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -47,11 +49,11 @@ public class AppointmentPOJO {
         this.status = status;
     }
 
-    public Calendar getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

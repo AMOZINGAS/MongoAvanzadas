@@ -4,28 +4,30 @@
  */
 package POJOs;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author Amos Heli Olguin Quiroz
  */
 public class AdministratorPOJO {
     
-    private Object id;
+    private ObjectId id;
     private String name;
 
     public AdministratorPOJO() {
     }
 
-    public AdministratorPOJO(Object id, String name) {
+    public AdministratorPOJO(ObjectId id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

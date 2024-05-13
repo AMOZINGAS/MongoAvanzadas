@@ -1,10 +1,11 @@
 package DTOs;
 
 import java.util.Calendar;
+import org.bson.types.ObjectId;
 
 public class ExistentAppointmentDTO {
 
-    private Object id;
+    private ObjectId id;
     private ExistentDoctorDTO doctor;
     private ExistentPatientDTO patient;
     private Calendar appointmentDate;
@@ -22,11 +23,11 @@ public class ExistentAppointmentDTO {
         this.note = note;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

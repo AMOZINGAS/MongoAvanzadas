@@ -8,6 +8,7 @@ import POJOs.PatientPOJO;
 import POJOs.DoctorPOJO;
 import java.util.Calendar;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 public interface IAppointmentManager {
 
@@ -20,14 +21,14 @@ public interface IAppointmentManager {
     public List<Calendar> findLimitDays(PatientPOJO patientPOJO);
 
     // public List<AppointmentEntity> findAppointmentsByPatientId(Long patientId);
-    public List<ExistentAppointmentDTO> findAppointmentsByPatientId(Long patientId);
+    public List<ExistentAppointmentDTO> findAppointmentsByPatientId(ObjectId patientId);
 
     public ExistentAppointmentDTO convertToDTO(AppointmentPOJO appointmentPOJO);
 
-    public List<ExistentAppointmentDTO> findAppointmentsByDoctorId(Long doctorId);
+    public List<ExistentAppointmentDTO> findAppointmentsByDoctorId(ObjectId doctorId);
 
-    public boolean cancelAppointment(Long id);
+    public boolean cancelAppointment(ObjectId id);
 
-    public ExistentAppointmentDTO findAppointmentById(Long id);
+    public ExistentAppointmentDTO findAppointmentById(ObjectId id);
 
 }

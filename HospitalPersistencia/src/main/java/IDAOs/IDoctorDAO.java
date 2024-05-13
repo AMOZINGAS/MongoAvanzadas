@@ -4,6 +4,7 @@ import DTOs.NewDoctorDTO;
 import DTOs.ExistentDoctorDTO;
 import POJOs.DoctorPOJO;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 public interface IDoctorDAO {
 
@@ -13,7 +14,7 @@ public interface IDoctorDAO {
 
     public DoctorPOJO ExistentDtoToEntity(ExistentDoctorDTO existentDoctorDTO);
 
-    public DoctorPOJO serachById(Long id);
+    public DoctorPOJO serachById(ObjectId id);
 
     public DoctorPOJO searchByMedicart(String medicalLicense);
 

@@ -2,10 +2,11 @@ package DTOs;
 
 import java.util.Calendar;
 import java.util.Objects;
+import org.bson.types.ObjectId;
 
 public class ExistentPatientDTO {
 
-    private Object id;
+    private ObjectId id;
     private String name;
     private String firstName;
     private String secondName;
@@ -21,7 +22,7 @@ public class ExistentPatientDTO {
     public ExistentPatientDTO() {
     }
 
-    public ExistentPatientDTO(Object id, String name, String firstName, String secondName, String curp, String phone, Calendar birthDate, String sex, String socialNumber) {
+    public ExistentPatientDTO(ObjectId id, String name, String firstName, String secondName, String curp, String phone, Calendar birthDate, String sex, String socialNumber) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
@@ -33,7 +34,7 @@ public class ExistentPatientDTO {
         this.socialNumber = socialNumber;
     }
 
-    public ExistentPatientDTO(Object id, String name, String firstName, String secondName, String curp, String phone, Calendar birthDate, String sex, String street, int zipCode, String colonia, String socialNumber) {
+    public ExistentPatientDTO(ObjectId id, String name, String firstName, String secondName, String curp, String phone, Calendar birthDate, String sex, String street, int zipCode, String colonia, String socialNumber) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
@@ -88,11 +89,11 @@ public class ExistentPatientDTO {
         this.socialNumber = socialNumber;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

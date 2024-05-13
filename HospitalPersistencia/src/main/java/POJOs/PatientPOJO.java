@@ -5,6 +5,8 @@
 package POJOs;
 
 import java.util.Calendar;
+import java.util.Date;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -12,11 +14,11 @@ import java.util.Calendar;
  */
 public class PatientPOJO {
     
-    private Object id;
+    private ObjectId id;
     private String names; 
     private String lastName; 
     private String secondName; 
-    private Calendar birthDate;
+    private Date birthDate;
     private String phone;
     private String street;
     private int zipCode;
@@ -28,7 +30,7 @@ public class PatientPOJO {
     public PatientPOJO() {
     }
 
-    public PatientPOJO(Object id, String names, String lastName, String secondName, Calendar birthDate, String phone, String street, int zipCode, String colony, String sex, String curp, String socialNumber) {
+    public PatientPOJO(ObjectId id, String names, String lastName, String secondName, Date birthDate, String phone, String street, int zipCode, String colony, String sex, String curp, String socialNumber) {
         this.id = id;
         this.names = names;
         this.lastName = lastName;
@@ -43,11 +45,11 @@ public class PatientPOJO {
         this.socialNumber = socialNumber;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -75,11 +77,11 @@ public class PatientPOJO {
         this.secondName = secondName;
     }
 
-    public Calendar getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Calendar birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

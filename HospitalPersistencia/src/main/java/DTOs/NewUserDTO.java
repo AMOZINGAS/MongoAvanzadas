@@ -3,21 +3,35 @@ package DTOs;
 import DTOs.NewAdministratorDTO;
 import DTOs.NewDoctorDTO;
 import DTOs.NewPatientDTO;
+import org.bson.types.ObjectId;
 
 public class NewUserDTO {
 
     private String curp;
     private String type;
     private String password;
+    private ObjectId idOwner;
+
     public NewUserDTO() {
     }
 
-    public NewUserDTO(String user, String password, String type) {
+    public NewUserDTO(String user, String password, String type, ObjectId idOwner) {
         this.curp = user;
         this.password = password;
         this.type = type;
+        this.idOwner = idOwner;
     }
 
+    public ObjectId getIdOwner() {
+        return idOwner;
+    }
+
+    public void setIdOwner(ObjectId idOwner) {
+        this.idOwner = idOwner;
+    }
+
+    
+    
     public String getCurp() {
         return curp;
     }

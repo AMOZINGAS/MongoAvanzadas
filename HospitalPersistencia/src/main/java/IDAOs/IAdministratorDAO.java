@@ -4,6 +4,7 @@ import DTOs.NewAdministratorDTO;
 import DTOs.ExistentAdministratorDTO;
 import POJOs.AdministratorPOJO;
 import POJOs.UserPOJO;
+import org.bson.types.ObjectId;
 
 
 public interface IAdministratorDAO {
@@ -16,6 +17,6 @@ public interface IAdministratorDAO {
 
     public AdministratorPOJO searchAdministratorByName(String names);
 
-    public AdministratorPOJO findAdministratorById(Object id);
+    public AdministratorPOJO findAdministratorById(ObjectId id);
 
 }
