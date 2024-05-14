@@ -158,6 +158,7 @@ public class JFrameCreateUser extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -168,23 +169,31 @@ public class JFrameCreateUser extends javax.swing.JFrame {
         userDTO.setPassword(txtPassword.getText());
 
         IUserDAO userDAO = new UserDAO();
-        if (userDAO.existUser(userDTO.getCurp())) {
+        if(txtCurp.getText().isBlank()|| txtPassword.getText().isBlank()){
+            
+            JOptionPane.showMessageDialog(this, "Please, add information in the emptys fiels");
+            
+        }else{
+            
+            if (userDAO.existUser(userDTO.getCurp())) {
 
-            JOptionPane.showMessageDialog(this, "The username is already in use");
-
-        } else {
-
-            if (userDTOAdmin == null) {
-
-                JFrameRegisterPatient frameRegisterPatient = new JFrameRegisterPatient(userDTO);
-                frameRegisterPatient.setVisible(true);
-                this.dispose();
+                JOptionPane.showMessageDialog(this, "The username is already in use");
 
             } else {
-                JFrameRegisterPatient frameRegisterPatient = new JFrameRegisterPatient(userDTO, userDTOAdmin);
-                frameRegisterPatient.setVisible(true);
-                this.dispose();
+
+                if (userDTOAdmin == null) {
+
+                    JFrameRegisterPatient frameRegisterPatient = new JFrameRegisterPatient(userDTO);
+                    frameRegisterPatient.setVisible(true);
+                    this.dispose();
+
+                } else {
+                    JFrameRegisterPatient frameRegisterPatient = new JFrameRegisterPatient(userDTO, userDTOAdmin);
+                    frameRegisterPatient.setVisible(true);
+                    this.dispose();
+                }
             }
+            
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 

@@ -46,7 +46,7 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
 
         this.dateChooser = new JDateChooser();
         this.dateChooser.setBounds(lblDate.getBounds());
-        this.add(dateChooser);
+        this.FondoPanel.add(dateChooser);
 
     }
 

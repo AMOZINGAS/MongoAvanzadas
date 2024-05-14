@@ -143,6 +143,7 @@ public class JFrameInitialMedicos extends javax.swing.JFrame {
         FondoPanel.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAppointmentMouseClicked
