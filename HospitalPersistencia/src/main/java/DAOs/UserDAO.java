@@ -41,7 +41,7 @@ public class UserDAO implements IUserDAO {
         userPOJO.setCurp(userDTO.getCurp());
         userPOJO.setPassword(userDTO.getPassword());
         userPOJO.setType(userDTO.getType());
-        userPOJO.setIdPatient(userDTO.getIdOwner());
+        userPOJO.setIdOwner(userDTO.getIdOwner());
         return userPOJO;
         
     }

@@ -1,5 +1,8 @@
 package itson.org.design.hospitalpersistencia;
 
+import DAOs.AdministratorDAO;
+import IDAOs.IAdministratorDAO;
+import POJOs.AdministratorPOJO;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,7 +13,12 @@ import java.util.Date;
 public class HospitalPersistencia {
 
     public static void main(String[] args) {
-
+//
+//        IAdministratorDAO administrator = new AdministratorDAO();
+//        AdministratorPOJO administratorPOJO = new AdministratorPOJO();
+//        administratorPOJO.setName("ADMIN");
+//        administrator.registerAdministrator(administratorPOJO);
+        
 //        Calendar calendar = Calendar.getInstance();
 //        calendar.getTime();
 //        Date date = new Date();

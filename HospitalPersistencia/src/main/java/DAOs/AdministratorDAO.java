@@ -7,6 +7,7 @@ import IDAOs.IAdministratorDAO;
 import POJOs.AdministratorPOJO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -70,8 +71,7 @@ public class AdministratorDAO implements IAdministratorDAO {
     @Override
     public AdministratorPOJO findAdministratorById(ObjectId id) {
     
-        Document filtro = new Document("id", id);
-        AdministratorPOJO administratorPOJO = collection.find(filtro).first();
+        AdministratorPOJO administratorPOJO = collection.find(Filters.eq("_id", id)).first();
         if(administratorPOJO != null){
             
             return administratorPOJO;

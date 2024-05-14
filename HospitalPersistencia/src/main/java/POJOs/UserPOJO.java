@@ -16,24 +16,25 @@ public class UserPOJO {
     private String type;
     private String password;
     private String curp;
-    private ObjectId idPatient;
+    private ObjectId idOwner;
 
     public UserPOJO() {
     }
 
-    public UserPOJO(ObjectId id, String type, String password, String curp, ObjectId idPatient) {
+    public UserPOJO(ObjectId id, String type, String password, String curp, ObjectId idOwner) {
         this.id = id;
         this.type = type;
         this.password = password;
         this.curp = curp;
+        this.idOwner = idOwner;
     }
 
-    public ObjectId getIdPatient() {
-        return idPatient;
+    public ObjectId getIdOwner() {
+        return idOwner;
     }
 
-    public void setIdPatient(ObjectId idPatient) {
-        this.idPatient = idPatient;
+    public void setIdOwner(ObjectId idPatient) {
+        this.idOwner = idPatient;
     }
 
     public ObjectId getId() {
@@ -76,6 +77,7 @@ public class UserPOJO {
         sb.append(", type=").append(type);
         sb.append(", password=").append(password);
         sb.append(", curp=").append(curp);
+        sb.append(", idOwner=").append(idOwner);
         sb.append('}');
         return sb.toString();
     }

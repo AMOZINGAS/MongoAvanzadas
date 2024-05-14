@@ -53,7 +53,7 @@ public class DoctorDAO implements IDoctorDAO {
         doctorPOJO.setId(existentDoctorDTO.getId());
         doctorPOJO.setLastName(existentDoctorDTO.getFirstName());
         doctorPOJO.setMedicalLicense(existentDoctorDTO.getMedicalCart());
-        doctorPOJO.setNames(doctorPOJO.getNames());
+        doctorPOJO.setNames(existentDoctorDTO.getName());
         doctorPOJO.setSecondName(existentDoctorDTO.getSecondName());
         doctorPOJO.setSpecialization(existentDoctorDTO.getSpecialization());
         return doctorPOJO;
@@ -118,7 +118,7 @@ public class DoctorDAO implements IDoctorDAO {
         doctorDTO.setId(doctorPOJO.getId());
         doctorDTO.setFirstName(doctorPOJO.getLastName());
         doctorDTO.setMedicalCart(doctorPOJO.getMedicalLicense());
-        doctorDTO.setName(doctorDTO.getName());
+        doctorDTO.setName(doctorPOJO.getNames());
         doctorDTO.setSecondName(doctorPOJO.getSecondName());
         doctorDTO.setSpecialization(doctorPOJO.getSpecialization());
         return doctorDTO;

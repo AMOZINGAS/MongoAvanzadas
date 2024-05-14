@@ -114,6 +114,7 @@ public class PatientDAO implements IPatientDAO {
     public PatientPOJO ExistentDtoToEntity(ExistentPatientDTO existentPatientDTO) {
     
         PatientPOJO patientPOJO = new PatientPOJO();
+        patientPOJO.setId(existentPatientDTO.getId());
         patientPOJO.setNames(existentPatientDTO.getName());
         patientPOJO.setLastName(existentPatientDTO.getFirstName());
         patientPOJO.setSecondName(existentPatientDTO.getSecondName());

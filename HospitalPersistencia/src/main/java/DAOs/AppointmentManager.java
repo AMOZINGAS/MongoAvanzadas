@@ -15,6 +15,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import connection.ConnectionDB;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,7 +37,7 @@ public class AppointmentManager implements IAppointmentManager {
     
     @Override
     public void createAppointment(AppointmentPOJO appointmentPOJO) {
-    
+        
         collection.insertOne(appointmentPOJO);
         
     }
@@ -46,12 +47,11 @@ public class AppointmentManager implements IAppointmentManager {
     
         AppointmentPOJO appointmentPOJO = new AppointmentPOJO();
         appointmentPOJO.setDate(newAppointmentDTO.getAppointmentDate().getTime());
-        
         IDoctorDAO doctorDAO = new DoctorDAO();
         appointmentPOJO.setIdDoctor(doctorDAO.ExistentDtoToEntity(newAppointmentDTO.getDoctor()));
         IPatientDAO patientDAO = new PatientDAO();
         appointmentPOJO.setIdPatient(patientDAO.ExistentDtoToEntity(newAppointmentDTO.getPatient()));
-        appointmentPOJO.setNote(appointmentPOJO.getNote());
+        appointmentPOJO.setNote(newAppointmentDTO.getNote());
         appointmentPOJO.setStatus(newAppointmentDTO.getStatus());
         return appointmentPOJO;
         
@@ -60,13 +60,19 @@ public class AppointmentManager implements IAppointmentManager {
     @Override
     public List<Calendar> findLimitDays(DoctorPOJO doctorPOJO) {
     
-           FindIterable<AppointmentPOJO> appointments = collection.find(Filters.eq("doctor", doctorPOJO.getId()));
+           FindIterable<AppointmentPOJO> appointments = collection.find(Filters.eq("idDoctor._id", doctorPOJO.getId()));
            List<Calendar> dateList = new ArrayList<>();
            for(AppointmentPOJO appointment: appointments){
                
-               Calendar calendar = Calendar.getInstance();
-               calendar.setTime(appointment.getDate());
-               dateList.add(calendar);
+               if(appointment.getStatus() == "CANCELLED"){
+               }else{
+                   
+                   Calendar calendar = Calendar.getInstance();
+                   calendar.setTime(appointment.getDate());
+                   dateList.add(calendar);
+                   
+               }
+               
                
            }
            
@@ -77,13 +83,18 @@ public class AppointmentManager implements IAppointmentManager {
     @Override
     public List<Calendar> findLimitDays(PatientPOJO patientPOJO) {
     
-        FindIterable<AppointmentPOJO> appointments = collection.find(Filters.eq("patient", patientPOJO.getId()));
+        FindIterable<AppointmentPOJO> appointments = collection.find(Filters.eq("idPatient._id", patientPOJO.getId()));
            List<Calendar> dateList = new ArrayList<>();
            for(AppointmentPOJO appointment: appointments){
                
-               Calendar calendar = Calendar.getInstance();
-               calendar.setTime(appointment.getDate());
-               dateList.add(calendar);
+               if(appointment.getStatus() == "CANCELLED"){
+               }else{
+                   
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(appointment.getDate());
+                    dateList.add(calendar);
+                   
+               }
                
            }
            
@@ -94,7 +105,7 @@ public class AppointmentManager implements IAppointmentManager {
     @Override
     public List<ExistentAppointmentDTO> findAppointmentsByPatientId(ObjectId patientId) {
     
-        FindIterable<AppointmentPOJO> appointmentByPatient = collection.find(Filters.eq("patient", patientId));
+        FindIterable<AppointmentPOJO> appointmentByPatient = collection.find(Filters.eq("idPatient._id", patientId));
         List<ExistentAppointmentDTO> DTOList = new ArrayList<>();
         for(AppointmentPOJO appointment: appointmentByPatient){
             
@@ -128,7 +139,7 @@ public class AppointmentManager implements IAppointmentManager {
     @Override
     public List<ExistentAppointmentDTO> findAppointmentsByDoctorId(ObjectId doctorId) {
     
-        FindIterable<AppointmentPOJO> appointmentByPatient = collection.find(Filters.eq("doctor", doctorId));
+        FindIterable<AppointmentPOJO> appointmentByPatient = collection.find(Filters.eq("idDoctor._id", doctorId));
         List<ExistentAppointmentDTO> DTOList = new ArrayList<>();
         for(AppointmentPOJO appointment: appointmentByPatient){
             

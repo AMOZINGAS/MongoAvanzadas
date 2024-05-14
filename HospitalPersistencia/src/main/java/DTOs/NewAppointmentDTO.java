@@ -1,6 +1,5 @@
 package DTOs;
 
-import Controlers.AppointmentStatus;
 import java.util.Calendar;
 
 public class NewAppointmentDTO {
@@ -62,4 +61,19 @@ public class NewAppointmentDTO {
         this.note = note;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("NewAppointmentDTO{");
+        sb.append("doctor=").append(doctor);
+        sb.append(", patient=").append(patient);
+        sb.append(", appointmentDate=").append(appointmentDate);
+        sb.append(", status=").append(status);
+        sb.append(", note=").append(note);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    
+    
 }
