@@ -87,9 +87,9 @@ public class JFrameLogin extends javax.swing.JFrame {
         FondoInicio.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, 17));
 
         btnAceptar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAceptar.setFont(new java.awt.Font("Stencil", 1, 16)); // NOI18N
+        btnAceptar.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnAceptar.setForeground(new java.awt.Color(0, 51, 255));
-        btnAceptar.setText("Login");
+        btnAceptar.setText("LOGIN");
         btnAceptar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, java.awt.Color.darkGray, null));
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +98,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         });
         FondoInicio.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 180, 50));
 
-        No_Tienes_Cuenta.setFont(new java.awt.Font("Stencil", 1, 16)); // NOI18N
+        No_Tienes_Cuenta.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         No_Tienes_Cuenta.setForeground(new java.awt.Color(0, 51, 255));
         No_Tienes_Cuenta.setText("New?");
         FondoInicio.add(No_Tienes_Cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 50, 20));
@@ -111,7 +111,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         FondoInicio.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 160, 40));
 
         jlbCreateAccount.setBackground(new java.awt.Color(0, 0, 255));
-        jlbCreateAccount.setFont(new java.awt.Font("Stencil", 1, 16)); // NOI18N
+        jlbCreateAccount.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jlbCreateAccount.setForeground(new java.awt.Color(102, 204, 255));
         jlbCreateAccount.setText("Register");
         jlbCreateAccount.setBorder(null);
@@ -129,8 +129,6 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         });
         FondoInicio.add(jlbCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 100, 20));
-
-        lblBackLogin.setText("jLabel2");
         FondoInicio.add(lblBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 390));
 
         jPanel1.add(FondoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 81, -1, 390));
@@ -169,7 +167,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(FondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
