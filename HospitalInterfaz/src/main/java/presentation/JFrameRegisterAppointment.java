@@ -468,14 +468,16 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
         if (doctorP1 == null) {
 
             createUser();
-            NewAppointmentDTO newAppointmentDTO = new NewAppointmentDTO();
-            newAppointmentDTO.setDoctor(existentDoctorDTO);
-            newAppointmentDTO.setPatient(paciente);
-            newAppointmentDTO.setStatus("ACTIVE");
-            newAppointmentDTO.setAppointmentDate(dateChooser.getCalendar());
-            newAppointmentDTO.setNote(txtNota.getText());
-
-            JFrameConfirmAppointment confirm = new JFrameConfirmAppointment(newAppointmentDTO, paciente);
+            System.out.println("Doctor: " + existentDoctorDTO);
+            NewAppointmentDTO appointmentDTO = new NewAppointmentDTO(existentDoctorDTO, paciente, dateChooser.getCalendar(), "ACTIVE", txtNota.getText());
+//            NewAppointmentDTO newAppointmentDTO = new NewAppointmentDTO();
+//            newAppointmentDTO.setDoctor(existentDoctorDTO);
+//            newAppointmentDTO.setPatient(paciente);
+//            newAppointmentDTO.setStatus("ACTIVE");
+//            newAppointmentDTO.setAppointmentDate(dateChooser.getCalendar());
+//            newAppointmentDTO.setNote(txtNota.getText());
+            
+            JFrameConfirmAppointment confirm = new JFrameConfirmAppointment(appointmentDTO, paciente);
             confirm.setVisible(true);
             this.dispose();
 

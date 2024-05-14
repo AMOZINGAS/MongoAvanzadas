@@ -3,6 +3,7 @@ presentation\JFrameRegisterAppointment$1.class
 presentation\JFrameInitialMedicos$1.class
 presentation\JFrameRegisterPatient$4.class
 presentation\JFrameRegisterDoctor.class
+presentation\JFrameRegisterDoctor$9.class
 presentation\JFrameLogin$3.class
 presentation\JFrameRegisterDoctor$6.class
 presentation\JFrameCreateUser$2.class
@@ -24,6 +25,7 @@ presentation\JFrameRegisterAppointment$2.class
 presentation\JFrameRegisterDoctor$7.class
 presentation\JFrameRegisterAppointment.class
 presentation\JFrameRegisterAppointment$3.class
+presentation\JFrameRegisterDoctor$11.class
 presentation\JFrameAdministrator$2.class
 presentation\JFrameConfirmAppointment$2.class
 presentation\JFrameRegisterPatient.class
@@ -39,6 +41,7 @@ presentation\JFrameInitialMedicos$3.class
 presentation\JFrameInitialMedicos$5.class
 presentation\JFrameLogin$1.class
 presentation\JFrameRegisterDoctor$1.class
+presentation\JFrameRegisterDoctor$10.class
 presentation\JFrameInitialPatient$1.class
 presentation\JFrameRegisterPatient$5.class
 presentation\JFrameConfirmAppointment$1.class

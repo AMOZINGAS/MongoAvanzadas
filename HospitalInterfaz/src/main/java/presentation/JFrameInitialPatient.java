@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import DTOs.ExistentPatientDTO;
 import IDAOs.IPatientDAO;
+import POJOs.PatientPOJO;
+import java.util.Calendar;
 import org.bson.types.ObjectId;
 
 
@@ -27,6 +29,8 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
 
         initComponents();
         IPatientDAO patientSystem = new PatientDAO();
+        PatientPOJO patient = patientSystem.serachPatientById(idPatient);
+        System.out.println(patient);
         paciente = patientSystem.EntityToDto(patientSystem.serachPatientById(idPatient));
         cargarCitasPaciente();
     }
@@ -38,10 +42,10 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
         IAppointmentManager appointmentManager = new AppointmentManager();
 
         List<ExistentAppointmentDTO> appointments = appointmentManager.findAppointmentsByPatientId(idPatient);
-
         for (ExistentAppointmentDTO appointment : appointments) {
+            String dateFormat = appointment.getAppointmentDate().get(Calendar.DAY_OF_MONTH) + "/" + (appointment.getAppointmentDate().get(Calendar.MONTH) + 1) + "/" + appointment.getAppointmentDate().get(Calendar.YEAR) + " " + appointment.getAppointmentDate().get(Calendar.HOUR_OF_DAY) + ":00";
             tblModel.addRow(new Object[]{
-                appointment.getAppointmentDate().getTime(),
+                dateFormat,
                 appointment.getDoctor().getName(),
                 appointment.getNote(),
                 appointment.getStatus()

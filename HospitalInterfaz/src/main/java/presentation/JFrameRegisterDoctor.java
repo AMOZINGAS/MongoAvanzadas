@@ -8,6 +8,7 @@ import IDAOs.IUserDAO;
 import DTOs.NewUserDTO;
 import IDAOs.IDoctorDAO;
 import POJOs.DoctorPOJO;
+import POJOs.UserPOJO;
 
 public class JFrameRegisterDoctor extends javax.swing.JFrame {
 
@@ -79,6 +80,11 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
                 txtNamesActionPerformed(evt);
             }
         });
+        txtNames.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNamesKeyReleased(evt);
+            }
+        });
         FondoPanel.add(txtNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 160, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -98,6 +104,11 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
         txtSeconName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSeconNameActionPerformed(evt);
+            }
+        });
+        txtSeconName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSeconNameKeyReleased(evt);
             }
         });
         FondoPanel.add(txtSeconName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 110, -1));
@@ -127,6 +138,11 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstNameActionPerformed(evt);
+            }
+        });
+        txtFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFirstNameKeyReleased(evt);
             }
         });
         FondoPanel.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 110, -1));
@@ -227,7 +243,7 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
         if (names.isEmpty() || firstName.isEmpty() || secondName.isEmpty()
                 || medicalCart.isEmpty() || user.isEmpty() || password.isEmpty()) {
 
-            JOptionPane.showMessageDialog(null, "Favor de llenar todos los campos", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please, add information in the empty fields", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
         if (!names.matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+") || !firstName.matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ]+") || !secondName.matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ]+")) {
             JOptionPane.showMessageDialog(null, "Names can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -256,6 +272,8 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
                     doctorDAO.registerDoctor(doctorDAO.DtoToEntity(doctorDTO));
                     DoctorPOJO doctorPOJO = doctorDAO.searchByMedicart(doctorDTO.getMedicalCart());
                     NewUserDTO userDTO = new NewUserDTO(user, password, "DOCTOR", doctorPOJO.getId());
+                    UserPOJO usuarioPOJO = userDAO.DtoToEntity(userDTO);
+                    userDAO.registerUser(usuarioPOJO);
                     JFrameAdministrator frameAdministrator = new JFrameAdministrator(userDTOAdmin.getCurp(), userDTOAdmin.getPassword());
                     frameAdministrator.setVisible(true);
                     this.dispose();
@@ -284,6 +302,34 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
 
     }//GEN-LAST:event_comboBoxActionPerformed
+
+    private void txtNamesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamesKeyReleased
+        // TODO add your handling code here:
+        if (!txtNames.getText().matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Names can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
+            txtNames.setText("");
+        }
+        
+    }//GEN-LAST:event_txtNamesKeyReleased
+
+    private void txtFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameKeyReleased
+        // TODO add your handling code here:
+        if(!txtFirstName.getText().matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+")){
+            JOptionPane.showMessageDialog(null, "First name can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
+            txtFirstName.setText("");
+        }
+        
+    }//GEN-LAST:event_txtFirstNameKeyReleased
+
+    private void txtSeconNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSeconNameKeyReleased
+        // TODO add your handling code here:
+        
+        if(!txtSeconName.getText().matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+")){
+            JOptionPane.showMessageDialog(null, "Second name can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
+            txtSeconName.setText("");
+        }
+        
+    }//GEN-LAST:event_txtSeconNameKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoAzul;

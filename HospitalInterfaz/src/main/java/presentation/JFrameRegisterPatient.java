@@ -137,9 +137,20 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
                 txtNameActionPerformed(evt);
             }
         });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
 
         Usuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Usuario.setText("Names");
+
+        txtFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFirstNameKeyReleased(evt);
+            }
+        });
 
         Usuario3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Usuario3.setText("CURP");
@@ -200,6 +211,12 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
         Usuario11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Usuario11.setText("Other");
 
+        txtOther.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtOtherKeyReleased(evt);
+            }
+        });
+
         cbxOther.setFont(new java.awt.Font("Roboto", 2, 12)); // NOI18N
         cbxOther.setText("Other");
         cbxOther.addActionListener(new java.awt.event.ActionListener() {
@@ -249,6 +266,12 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
 
         Usuario9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Usuario9.setText("Zipcode");
+
+        txtSecondName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSecondNameKeyReleased(evt);
+            }
+        });
 
         Usuario12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Usuario12.setText("Birth Date");
@@ -491,6 +514,39 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
     private void txtStreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStreetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStreetActionPerformed
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        if(!txtName.getText().matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+")){
+            JOptionPane.showMessageDialog(null, "Name can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
+            txtName.setText("");
+        }
+    }//GEN-LAST:event_txtNameKeyReleased
+
+    private void txtFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameKeyReleased
+        // TODO add your handling code here:
+        if(!txtFirstName.getText().matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+")){
+            JOptionPane.showMessageDialog(null, "First name can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
+            txtFirstName.setText("");
+        }
+    }//GEN-LAST:event_txtFirstNameKeyReleased
+
+    private void txtSecondNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSecondNameKeyReleased
+        // TODO add your handling code here:
+        if(!txtSecondName.getText().matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+")){
+            JOptionPane.showMessageDialog(null, "Second name can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
+            txtSecondName.setText("");
+        }
+        
+    }//GEN-LAST:event_txtSecondNameKeyReleased
+
+    private void txtOtherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOtherKeyReleased
+        // TODO add your handling code here:
+        if(!txtOther.getText().matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+")){
+            JOptionPane.showMessageDialog(null, "Other can only contain leters", "Error", JOptionPane.INFORMATION_MESSAGE);
+            txtOther.setText("");
+        }
+    }//GEN-LAST:event_txtOtherKeyReleased
 
 //    /**
 //     * @param args the command line arguments

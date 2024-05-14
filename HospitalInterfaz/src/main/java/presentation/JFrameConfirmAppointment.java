@@ -1,11 +1,15 @@
 package presentation;
 
 import DAOs.AppointmentManager;
+import DAOs.PatientDAO;
 import IDAOs.IAppointmentManager;
 import DTOs.NewAppointmentDTO;
 import DTOs.ExistentDoctorDTO;
 import java.util.Calendar;
 import DTOs.ExistentPatientDTO;
+import IDAOs.IPatientDAO;
+import POJOs.AppointmentPOJO;
+import POJOs.PatientPOJO;
 
 public class JFrameConfirmAppointment extends javax.swing.JFrame {
 
@@ -19,7 +23,6 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
     public JFrameConfirmAppointment(NewAppointmentDTO newAppointmentDTO, ExistentPatientDTO patientDTO) {
         this.patientDTO = patientDTO;
         this.newAppointmentDTO = newAppointmentDTO;
-
         initComponents();
         this.lblName.setText(newAppointmentDTO.getPatient().getName());
         this.lblDoctor.setText(newAppointmentDTO.getDoctor().getName());
@@ -168,11 +171,11 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
         IAppointmentManager appointmentManager = new AppointmentManager();
-        System.out.println(newAppointmentDTO.getAppointmentDate().get(Calendar.HOUR));
-        appointmentManager.createAppointment(appointmentManager.DtoToEntity(newAppointmentDTO));
+        AppointmentPOJO appointmentPOJO = appointmentManager.DtoToEntity(newAppointmentDTO);
+        appointmentManager.createAppointment(appointmentPOJO);
 
         if (doctorDTO == null) {
-            JFrameInitialPatient frameInitialPatient = new JFrameInitialPatient(newAppointmentDTO.getPatient().getId());
+            JFrameInitialPatient frameInitialPatient = new JFrameInitialPatient(patientDTO.getId());
             frameInitialPatient.setVisible(true);
             this.dispose();
 

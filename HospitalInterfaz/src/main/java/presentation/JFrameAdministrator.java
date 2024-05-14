@@ -21,10 +21,10 @@ public class JFrameAdministrator extends javax.swing.JFrame {
         initComponents();
         NewAdministratorDTO newAdministratorDTO = new NewAdministratorDTO();
         IUserDAO userDAO = new UserDAO();
-        UserPOJO userEntity = userDAO.findUserByUserPassword(user, password);
+        UserPOJO userPOJO = userDAO.findUserByUserPassword(user, password);
         IAdministratorDAO administratorDAO = new AdministratorDAO();
-        
-        AdministratorPOJO userAdministrator = administratorDAO.findAdministratorById(userEntity.getId());
+        System.out.println(userPOJO);
+        AdministratorPOJO userAdministrator = administratorDAO.findAdministratorById(userPOJO.getIdOwner());
         newAdministratorDTO.setName(userAdministrator.getName());
         this.userDTOAdmin = new NewUserDTO(user, password, "ADMINISTRATOR", userAdministrator.getId());
 

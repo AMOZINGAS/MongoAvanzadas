@@ -226,7 +226,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                     if(userSystem.validateUser(user, password)){
                         System.out.println("OLAAAA");
                         UserPOJO userPOJO = userSystem.findUserByUserPassword(user, password);
-                        JFrameInitialPatient frameInitialPatient = new JFrameInitialPatient(userPOJO.getId());
+                        JFrameInitialPatient frameInitialPatient = new JFrameInitialPatient(userPOJO.getIdOwner());
                         frameInitialPatient.setVisible(true);
                         this.dispose();
                         break;
@@ -236,7 +236,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                 case "DOCTOR":
                     
                     UserPOJO userPOJO = userSystem.findUserByUserPassword(user, password);
-                    JFrameInitialMedicos frameInitialMedicos = new JFrameInitialMedicos(userPOJO.getId());
+                    JFrameInitialMedicos frameInitialMedicos = new JFrameInitialMedicos(userPOJO.getIdOwner());
                     frameInitialMedicos.setVisible(true);
                     this.dispose();
                     break;
