@@ -9,6 +9,7 @@ import DTOs.NewUserDTO;
 import IDAOs.IDoctorDAO;
 import POJOs.DoctorPOJO;
 import POJOs.UserPOJO;
+import Tools.Pintar;
 
 public class JFrameRegisterDoctor extends javax.swing.JFrame {
 
@@ -20,6 +21,12 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
     public JFrameRegisterDoctor(NewUserDTO userDTOAdmin) {
         initComponents();
         this.userDTOAdmin = userDTOAdmin;
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondo, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
 
     }
 
@@ -34,7 +41,6 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
 
         FondoPanel = new javax.swing.JPanel();
         FondoAzul = new javax.swing.JPanel();
-        Hospital_General = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNames = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -52,6 +58,12 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         comboBox = new javax.swing.JComboBox<>();
         txtPassword = new javax.swing.JPasswordField();
+        lblBackLogin = new javax.swing.JLabel();
+        lblWithe = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblBlue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,14 +74,10 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
         FondoAzul.setBackground(new java.awt.Color(0, 153, 255));
         FondoAzul.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         FondoAzul.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Hospital_General.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Hospital_General.setText("General Hospital");
-        FondoAzul.add(Hospital_General, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 39));
-
         FondoPanel.add(FondoAzul, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Register Doctor");
         FondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
@@ -85,19 +93,22 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
                 txtNamesKeyReleased(evt);
             }
         });
-        FondoPanel.add(txtNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 160, -1));
+        FondoPanel.add(txtNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 160, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 102, 255));
         jLabel11.setText("Names");
-        FondoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 110, -1));
+        FondoPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 110, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("First Last Name");
-        FondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
+        FondoPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 102, 255));
         jLabel12.setText("Second Last Name");
-        FondoPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
+        FondoPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
 
         txtSeconName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtSeconName.setDisabledTextColor(new java.awt.Color(204, 204, 204));
@@ -111,27 +122,34 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
                 txtSeconNameKeyReleased(evt);
             }
         });
-        FondoPanel.add(txtSeconName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 110, -1));
+        FondoPanel.add(txtSeconName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 110, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 102, 255));
         jLabel9.setText("Medicalcart");
-        FondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+        FondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
-        btnCancel.setText("Cancel");
+        btnCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(51, 102, 255));
+        btnCancel.setText("CANCEL");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
-        FondoPanel.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+        FondoPanel.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 120, 40));
 
-        btnConfirm1.setText("Accept");
+        btnConfirm1.setBackground(new java.awt.Color(255, 255, 255));
+        btnConfirm1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnConfirm1.setForeground(new java.awt.Color(51, 102, 255));
+        btnConfirm1.setText("ACCEPT");
         btnConfirm1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirm1ActionPerformed(evt);
             }
         });
-        FondoPanel.add(btnConfirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, -1, -1));
+        FondoPanel.add(btnConfirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 120, 40));
 
         txtFirstName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtFirstName.setDisabledTextColor(new java.awt.Color(204, 204, 204));
@@ -145,7 +163,7 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
                 txtFirstNameKeyReleased(evt);
             }
         });
-        FondoPanel.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 110, -1));
+        FondoPanel.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 110, -1));
 
         txtMedicalCart.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtMedicalCart.setDisabledTextColor(new java.awt.Color(204, 204, 204));
@@ -154,15 +172,17 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
                 txtMedicalCartActionPerformed(evt);
             }
         });
-        FondoPanel.add(txtMedicalCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 160, -1));
+        FondoPanel.add(txtMedicalCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 160, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 102, 255));
         jLabel10.setText("Password");
-        FondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, -1, -1));
+        FondoPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 102, 255));
         jLabel13.setText("User");
-        FondoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
+        FondoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
 
         txtUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtUser.setDisabledTextColor(new java.awt.Color(204, 204, 204));
@@ -171,11 +191,12 @@ public class JFrameRegisterDoctor extends javax.swing.JFrame {
                 txtUserActionPerformed(evt);
             }
         });
-        FondoPanel.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 130, -1));
+        FondoPanel.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 140, 40));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 102, 255));
         jLabel14.setText("Specialization");
-        FondoPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
+        FondoPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {" NONE",
             "SURGERY",
@@ -189,24 +210,33 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
         comboBoxActionPerformed(evt);
     }
     });
-    FondoPanel.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 120, -1));
-    FondoPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 360, 130, -1));
+    FondoPanel.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 120, -1));
+    FondoPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 140, 40));
+    FondoPanel.add(lblBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 200, 180));
+    FondoPanel.add(lblWithe, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 610, 160));
+    FondoPanel.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 850, 520));
+
+    lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    FondoPanel.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+
+    jLabel1.setFont(new java.awt.Font("Stencil", 1, 24)); // NOI18N
+    jLabel1.setForeground(new java.awt.Color(0, 51, 255));
+    jLabel1.setText("General Hospital");
+    FondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 249, 36));
+
+    lblBlue.setBackground(new java.awt.Color(51, 102, 255));
+    lblBlue.setForeground(new java.awt.Color(51, 102, 255));
+    FondoPanel.add(lblBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 60));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addComponent(FondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+        .addComponent(FondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addComponent(FondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+        .addComponent(FondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
     );
 
     pack();
@@ -335,10 +365,10 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoAzul;
     private javax.swing.JPanel FondoPanel;
-    private javax.swing.JLabel Hospital_General;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm1;
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -347,6 +377,11 @@ comboBox.addActionListener(new java.awt.event.ActionListener() {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblBackLogin;
+    private javax.swing.JLabel lblBlue;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblWithe;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtMedicalCart;
     private javax.swing.JTextField txtNames;

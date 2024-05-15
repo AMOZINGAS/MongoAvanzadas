@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import DTOs.ExistentPatientDTO;
 import IDAOs.IPatientDAO;
 import POJOs.PatientPOJO;
+import Tools.Pintar;
 import java.util.Calendar;
 import org.bson.types.ObjectId;
 
@@ -33,6 +34,11 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
         System.out.println(patient);
         paciente = patientSystem.EntityToDto(patientSystem.serachPatientById(idPatient));
         cargarCitasPaciente();
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondo, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        
     }
 
     private void cargarCitasPaciente() {
@@ -66,12 +72,16 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         FondoPanel = new javax.swing.JPanel();
         FondoAzul = new javax.swing.JPanel();
-        Hospital_General = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAppointment = new javax.swing.JTable();
         btn_cancelAppointment = new javax.swing.JButton();
         btnCreateAppointment = new javax.swing.JButton();
         txtCloseSesion = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblBlue = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         jButton2.setText("AgendarCita");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -90,12 +100,10 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
         FondoAzul.setBackground(new java.awt.Color(0, 153, 255));
         FondoAzul.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         FondoAzul.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Hospital_General.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Hospital_General.setText("General Hospital");
-        FondoAzul.add(Hospital_General, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 39));
-
         FondoPanel.add(FondoAzul, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setForeground(new java.awt.Color(51, 102, 255));
 
         jTableAppointment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,33 +123,61 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableAppointment);
 
-        FondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 157, 840, 320));
+        FondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 157, 820, 410));
 
+        btn_cancelAppointment.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cancelAppointment.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btn_cancelAppointment.setForeground(new java.awt.Color(51, 102, 255));
         btn_cancelAppointment.setText("Cancel Appointment");
         btn_cancelAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelAppointmentActionPerformed(evt);
             }
         });
-        FondoPanel.add(btn_cancelAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, -1, -1));
+        FondoPanel.add(btn_cancelAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 200, 50));
 
+        btnCreateAppointment.setBackground(new java.awt.Color(255, 255, 255));
+        btnCreateAppointment.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnCreateAppointment.setForeground(new java.awt.Color(51, 102, 255));
         btnCreateAppointment.setText("Create Appointment");
         btnCreateAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateAppointmentActionPerformed(evt);
             }
         });
-        FondoPanel.add(btnCreateAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, -1, -1));
+        FondoPanel.add(btnCreateAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 200, 50));
 
+        txtCloseSesion.setBackground(new java.awt.Color(255, 255, 255));
+        txtCloseSesion.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        txtCloseSesion.setForeground(new java.awt.Color(51, 102, 255));
         txtCloseSesion.setText("Signout");
         txtCloseSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCloseSesionActionPerformed(evt);
             }
         });
-        FondoPanel.add(txtCloseSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        FondoPanel.add(txtCloseSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 90, 30));
 
-        getContentPane().add(FondoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 880, 490));
+        jLabel1.setFont(new java.awt.Font("Stencil", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel1.setText("General Hospital");
+        FondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 249, 36));
+
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FondoPanel.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+
+        lblBlue.setBackground(new java.awt.Color(51, 102, 255));
+        lblBlue.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel.add(lblBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 60));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel2.setText("Patient");
+        FondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        FondoPanel.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 860, 530));
+
+        getContentPane().add(FondoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 900, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -227,12 +263,16 @@ public class JFrameInitialPatient extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoAzul;
     private javax.swing.JPanel FondoPanel;
-    private javax.swing.JLabel Hospital_General;
     private javax.swing.JButton btnCreateAppointment;
     private javax.swing.JButton btn_cancelAppointment;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAppointment;
+    private javax.swing.JLabel lblBlue;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JButton txtCloseSesion;
     // End of variables declaration//GEN-END:variables
 }

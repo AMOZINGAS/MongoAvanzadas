@@ -20,6 +20,7 @@ import java.awt.Point;
 import IDAOs.IPatientDAO;
 import POJOs.DoctorPOJO;
 import POJOs.PatientPOJO;
+import Tools.Pintar;
 
 public class JFrameRegisterAppointment extends javax.swing.JFrame {
 
@@ -57,6 +58,12 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
         txtNota.setText(appointmentDTO.getNote());
         dateChooser.setCalendar(appointmentDTO.getAppointmentDate());
         cmbTime.setSelectedIndex(indexComboBox(dateChooser.getCalendar().get(Calendar.HOUR_OF_DAY)));
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondoPro, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
     }
     
 
@@ -97,6 +104,12 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
             
         }
         cmbTime.setSelectedIndex(indexComboBox(dateChooser.getCalendar().get(Calendar.HOUR_OF_DAY)));
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondoPro, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
         
     }
 
@@ -109,6 +122,12 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
         cmbPatient.setVisible(false);
         lblDate.setVisible(false);
         lblPatient.setVisible(false);
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondoPro, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
         
     }
 
@@ -126,6 +145,12 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
         limitDaysSelected = new ArrayList<>();
         patientList();
         lblDate.setVisible(false);
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondoPro, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
     }
 
     public void patientList() {
@@ -146,7 +171,7 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
 
         this.dateChooser = new JDateChooser();
         this.dateChooser.setBounds(this.lblDate.getBounds());
-        this.FondoPanel.add(dateChooser);
+        this.jPanel1.add(dateChooser);
 
     }
 
@@ -160,8 +185,6 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
     private void initComponents() {
 
         FondoPanel = new javax.swing.JPanel();
-        FondoAzul = new javax.swing.JPanel();
-        Hospital_General = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -175,49 +198,49 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
         lblSpecilaization = new javax.swing.JLabel();
         lblDoctors1 = new javax.swing.JLabel();
         cmbPatient = new javax.swing.JComboBox<>();
-        lblDate = new javax.swing.JLabel();
         cmbTime = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        lblDate = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        lblBlue = new javax.swing.JLabel();
+        lblBackLogin = new javax.swing.JLabel();
+        lblFondoPro = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FondoPanel.setBackground(new java.awt.Color(255, 255, 255));
         FondoPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        FondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FondoAzul.setBackground(new java.awt.Color(0, 153, 255));
-        FondoAzul.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        Hospital_General.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Hospital_General.setText("General Hospital");
-
-        javax.swing.GroupLayout FondoAzulLayout = new javax.swing.GroupLayout(FondoAzul);
-        FondoAzul.setLayout(FondoAzulLayout);
-        FondoAzulLayout.setHorizontalGroup(
-            FondoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Hospital_General, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        FondoAzulLayout.setVerticalGroup(
-            FondoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Hospital_General, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Register Appointment");
+        FondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 62, -1, -1));
 
-        jButton1.setText("Next");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 102, 255));
+        jButton1.setText("NEXT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        FondoPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 130, 50));
 
-        jButton2.setText("Cancel");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 102, 255));
+        jButton2.setText("CANCEL");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        FondoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 130, 50));
 
         cmbDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         cmbDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -230,21 +253,30 @@ public class JFrameRegisterAppointment extends javax.swing.JFrame {
                 cmbDoctorActionPerformed(evt);
             }
         });
+        FondoPanel.add(cmbDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 110, -1));
 
-        lblPatient.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblPatient.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblPatient.setForeground(new java.awt.Color(51, 102, 255));
         lblPatient.setText("Patients");
+        FondoPanel.add(lblPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
+        FondoPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, -1, -1));
 
-        lblTime.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblTime.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(51, 102, 255));
         lblTime.setText("Time");
+        FondoPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 102, 255));
         jLabel13.setText("Note...");
+        FondoPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, -1, -1));
 
         txtNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNotaActionPerformed(evt);
             }
         });
+        FondoPanel.add(txtNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 320, 40));
 
         cbxSpecialization.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY",   "PEDIATRIC",
             "SURGERY",
@@ -256,111 +288,73 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
         cbxSpecializationActionPerformed(evt);
     }
     });
+    FondoPanel.add(cbxSpecialization, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 110, -1));
 
-    lblSpecilaization.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    lblSpecilaization.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+    lblSpecilaization.setForeground(new java.awt.Color(51, 102, 255));
     lblSpecilaization.setText("Specialization");
+    FondoPanel.add(lblSpecilaization, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
 
-    lblDoctors1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    lblDoctors1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+    lblDoctors1.setForeground(new java.awt.Color(51, 102, 255));
     lblDoctors1.setText("Doctors");
+    FondoPanel.add(lblDoctors1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
 
     cmbPatient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+    cmbPatient.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cmbPatientActionPerformed(evt);
+        }
+    });
+    FondoPanel.add(cmbPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 110, -1));
 
     cmbTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"}));
+    FondoPanel.add(cmbTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 117, 30));
 
-    jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+    jLabel14.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+    jLabel14.setForeground(new java.awt.Color(51, 102, 255));
     jLabel14.setText("Date ");
 
-    javax.swing.GroupLayout FondoPanelLayout = new javax.swing.GroupLayout(FondoPanel);
-    FondoPanel.setLayout(FondoPanelLayout);
-    FondoPanelLayout.setHorizontalGroup(
-        FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(FondoPanelLayout.createSequentialGroup()
-            .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(2, 2, 2)
-                    .addComponent(FondoAzul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addComponent(jLabel1))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(260, 260, 260)
-                    .addComponent(lblSpecilaization)
-                    .addGap(12, 12, 12)
-                    .addComponent(lblPatient)
-                    .addGap(18, 18, 18)
-                    .addComponent(lblDoctors1))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(260, 260, 260)
-                    .addComponent(cbxSpecialization, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(FondoPanelLayout.createSequentialGroup()
-                            .addGap(80, 80, 80)
-                            .addComponent(cmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cmbPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(280, 280, 280)
-                    .addComponent(jLabel14)
-                    .addGap(120, 120, 120)
-                    .addComponent(lblTime))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(280, 280, 280)
-                    .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(136, 136, 136)
-                    .addComponent(cmbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(280, 280, 280)
-                    .addComponent(jLabel13))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(280, 280, 280)
-                    .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(100, 100, 100)
-                    .addComponent(jButton2)
-                    .addGap(518, 518, 518)
-                    .addComponent(jButton1)))
-            .addGap(2, 2, 2))
-    );
-    FondoPanelLayout.setVerticalGroup(
-        FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(FondoPanelLayout.createSequentialGroup()
-            .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(FondoPanelLayout.createSequentialGroup()
-                    .addGap(2, 2, 2)
-                    .addComponent(FondoAzul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(17, 17, 17)
-            .addComponent(jLabel1)
-            .addGap(68, 68, 68)
-            .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblSpecilaization)
-                .addComponent(lblPatient)
-                .addComponent(lblDoctors1))
-            .addGap(8, 8, 8)
-            .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(cbxSpecialization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(cmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(cmbPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(28, 28, 28)
-            .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel14)
-                .addComponent(lblTime))
-            .addGap(8, 8, 8)
-            .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(cmbTime, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGap(20, 20, 20)
-            .addComponent(jLabel13)
-            .addGap(8, 8, 8)
-            .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(50, 50, 50)
-            .addGroup(FondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jButton2)
-                .addComponent(jButton1)))
+                .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel1Layout.setVerticalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(15, 15, 15)
+            .addComponent(jLabel14)
+            .addGap(4, 4, 4)
+            .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
-    getContentPane().add(FondoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 880, 490));
+    FondoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 160, 80));
+
+    lblBlue.setBackground(new java.awt.Color(51, 102, 255));
+    lblBlue.setForeground(new java.awt.Color(51, 102, 255));
+    FondoPanel.add(lblBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 60));
+    FondoPanel.add(lblBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 400, 300));
+    FondoPanel.add(lblFondoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 840, 520));
+
+    lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    FondoPanel.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+
+    jLabel3.setFont(new java.awt.Font("Stencil", 1, 24)); // NOI18N
+    jLabel3.setForeground(new java.awt.Color(0, 51, 255));
+    jLabel3.setText("General Hospital");
+    FondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 249, 36));
+
+    getContentPane().add(FondoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
     pack();
     setLocationRelativeTo(null);
@@ -609,6 +603,10 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNotaActionPerformed
 
+    private void cmbPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPatientActionPerformed
+
 //    public void limitarFecha() {
 //        Calendar fechaMinima = Calendar.getInstance();
 //        fechaMinima.set(Calendar.DATE, 1);
@@ -658,9 +656,7 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
 //        });
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel FondoAzul;
     private javax.swing.JPanel FondoPanel;
-    private javax.swing.JLabel Hospital_General;
     private javax.swing.JComboBox<String> cbxSpecialization;
     private javax.swing.JComboBox<String> cmbDoctor;
     private javax.swing.JComboBox<String> cmbPatient;
@@ -670,9 +666,15 @@ cbxSpecialization.addActionListener(new java.awt.event.ActionListener() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JLabel lblBackLogin;
+    private javax.swing.JLabel lblBlue;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDoctors1;
+    private javax.swing.JLabel lblFondoPro;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPatient;
     private javax.swing.JLabel lblSpecilaization;
     private javax.swing.JLabel lblTime;

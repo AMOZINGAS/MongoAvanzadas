@@ -10,6 +10,7 @@ import DTOs.ExistentPatientDTO;
 import IDAOs.IPatientDAO;
 import POJOs.AppointmentPOJO;
 import POJOs.PatientPOJO;
+import Tools.Pintar;
 
 public class JFrameConfirmAppointment extends javax.swing.JFrame {
 
@@ -30,6 +31,13 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
         this.lblDate.setText(dateString);
         this.lblSpecialitazion.setText(newAppointmentDTO.getDoctor().getSpecialization().toString());
         this.lblNote.setText(newAppointmentDTO.getNote());
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondo, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
+        
     }
 
     public JFrameConfirmAppointment(NewAppointmentDTO newAppointmentDTO, ExistentDoctorDTO doctorDTO) {
@@ -44,6 +52,13 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
         this.lblDate.setText(dateString);
         this.lblSpecialitazion.setText(newAppointmentDTO.getDoctor().getSpecialization().toString());
         this.lblNote.setText(newAppointmentDTO.getNote());
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondo, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
+        
     }
 
     /**
@@ -56,8 +71,6 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
     private void initComponents() {
 
         FondoPanel5 = new javax.swing.JPanel();
-        FondoAzul5 = new javax.swing.JPanel();
-        Hospital_General5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -71,6 +84,11 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
         lblDoctor = new javax.swing.JLabel();
         lblSpecialitazion = new javax.swing.JLabel();
         lblNote = new javax.swing.JLabel();
+        lblBackLogin = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblBlue = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,76 +97,98 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
         FondoPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         FondoPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FondoAzul5.setBackground(new java.awt.Color(0, 153, 255));
-        FondoAzul5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        Hospital_General5.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
-        Hospital_General5.setText("Hospital General");
-
-        javax.swing.GroupLayout FondoAzul5Layout = new javax.swing.GroupLayout(FondoAzul5);
-        FondoAzul5.setLayout(FondoAzul5Layout);
-        FondoAzul5Layout.setHorizontalGroup(
-            FondoAzul5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoAzul5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(Hospital_General5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(518, Short.MAX_VALUE))
-        );
-        FondoAzul5Layout.setVerticalGroup(
-            FondoAzul5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoAzul5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Hospital_General5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        FondoPanel5.add(FondoAzul5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 102, 255));
         jLabel10.setText("Doctotor");
-        FondoPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
+        FondoPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Name");
-        FondoPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        FondoPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 102, 255));
         jLabel11.setText("Note");
-        FondoPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        FondoPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
 
-        btnEdit.setText("Edit");
+        btnEdit.setBackground(new java.awt.Color(255, 255, 255));
+        btnEdit.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(51, 102, 255));
+        btnEdit.setText("EDIT");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
-        FondoPanel5.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
+        FondoPanel5.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 120, 50));
 
-        btnConfirm.setText("Confirm");
+        btnConfirm.setBackground(new java.awt.Color(255, 255, 255));
+        btnConfirm.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnConfirm.setForeground(new java.awt.Color(51, 102, 255));
+        btnConfirm.setText("CONFIRM");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmActionPerformed(evt);
             }
         });
-        FondoPanel5.add(btnConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
+        FondoPanel5.add(btnConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 120, 50));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Confirm Appointment");
-        FondoPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        FondoPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 102, 255));
         jLabel8.setText("Specialization");
-        FondoPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        FondoPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 102, 255));
         jLabel9.setText("Date");
-        FondoPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
-        FondoPanel5.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 156, 26));
-        FondoPanel5.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 156, 26));
-        FondoPanel5.add(lblDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 156, 26));
-        FondoPanel5.add(lblSpecialitazion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 156, 26));
-        FondoPanel5.add(lblNote, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 156, 26));
+        FondoPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, -1));
 
-        getContentPane().add(FondoPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 440));
+        lblName.setBackground(new java.awt.Color(153, 255, 255));
+        lblName.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblName.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel5.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 156, 26));
+
+        lblDate.setBackground(new java.awt.Color(153, 255, 255));
+        lblDate.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel5.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 156, 26));
+
+        lblDoctor.setBackground(new java.awt.Color(153, 255, 255));
+        lblDoctor.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblDoctor.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel5.add(lblDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 156, 26));
+
+        lblSpecialitazion.setBackground(new java.awt.Color(153, 255, 255));
+        lblSpecialitazion.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblSpecialitazion.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel5.add(lblSpecialitazion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 156, 26));
+
+        lblNote.setBackground(new java.awt.Color(153, 255, 255));
+        lblNote.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblNote.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel5.add(lblNote, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 156, 26));
+        FondoPanel5.add(lblBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 350, 250));
+
+        jLabel4.setFont(new java.awt.Font("Stencil", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel4.setText("General Hospital");
+        FondoPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 249, 36));
+
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FondoPanel5.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+
+        lblBlue.setBackground(new java.awt.Color(51, 102, 255));
+        lblBlue.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel5.add(lblBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 60));
+        FondoPanel5.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 860, 530));
+
+        getContentPane().add(FondoPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -222,19 +262,22 @@ public class JFrameConfirmAppointment extends javax.swing.JFrame {
 //        });
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel FondoAzul5;
     private javax.swing.JPanel FondoPanel5;
-    private javax.swing.JLabel Hospital_General5;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnEdit;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblBackLogin;
+    private javax.swing.JLabel lblBlue;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDoctor;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblSpecialitazion;

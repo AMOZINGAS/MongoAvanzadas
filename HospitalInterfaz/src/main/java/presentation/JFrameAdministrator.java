@@ -8,6 +8,7 @@ import IDAOs.IUserDAO;
 import DTOs.NewUserDTO;
 import POJOs.AdministratorPOJO;
 import POJOs.UserPOJO;
+import Tools.Pintar;
 
 
 public class JFrameAdministrator extends javax.swing.JFrame {
@@ -27,6 +28,12 @@ public class JFrameAdministrator extends javax.swing.JFrame {
         AdministratorPOJO userAdministrator = administratorDAO.findAdministratorById(userPOJO.getIdOwner());
         newAdministratorDTO.setName(userAdministrator.getName());
         this.userDTOAdmin = new NewUserDTO(user, password, "ADMINISTRATOR", userAdministrator.getId());
+        Pintar imagen = new Pintar();
+        imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondo, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+        imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
+        imagen.PintarImagen(lblBackLogin, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
+
 
     }
 
@@ -40,12 +47,15 @@ public class JFrameAdministrator extends javax.swing.JFrame {
     private void initComponents() {
 
         FondoPanel5 = new javax.swing.JPanel();
-        FondoAzul5 = new javax.swing.JPanel();
-        Hospital_General5 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblBackLogin = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblBlue = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,75 +63,67 @@ public class JFrameAdministrator extends javax.swing.JFrame {
         FondoPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         FondoPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FondoAzul5.setBackground(new java.awt.Color(0, 153, 255));
-        FondoAzul5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        Hospital_General5.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
-        Hospital_General5.setText("Hospital General");
-
-        javax.swing.GroupLayout FondoAzul5Layout = new javax.swing.GroupLayout(FondoAzul5);
-        FondoAzul5.setLayout(FondoAzul5Layout);
-        FondoAzul5Layout.setHorizontalGroup(
-            FondoAzul5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoAzul5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(Hospital_General5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(518, Short.MAX_VALUE))
-        );
-        FondoAzul5Layout.setVerticalGroup(
-            FondoAzul5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoAzul5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Hospital_General5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        FondoPanel5.add(FondoAzul5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
-
-        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jToggleButton1.setText("Register Pacient");
+        jToggleButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jToggleButton1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(51, 102, 255));
+        jToggleButton1.setText("REGISTER PATIENT");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        FondoPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 136, 46));
+        FondoPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 180, 46));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Administrator");
-        FondoPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, 44));
+        FondoPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, 44));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Register Doctors");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 102, 255));
+        jButton1.setText("REGISTER DOCTOR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        FondoPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, 46));
+        FondoPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, 46));
 
-        jButton2.setText("Signout");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 102, 255));
+        jButton2.setText("SIGNOUT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        FondoPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        FondoPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        FondoPanel5.add(lblBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 290, 320));
+
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FondoPanel5.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
+
+        jLabel2.setFont(new java.awt.Font("Stencil", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel2.setText("General Hospital");
+        FondoPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 249, 36));
+
+        lblBlue.setBackground(new java.awt.Color(51, 102, 255));
+        lblBlue.setForeground(new java.awt.Color(51, 102, 255));
+        FondoPanel5.add(lblBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 60));
+        FondoPanel5.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 860, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(FondoPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(FondoPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(FondoPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(FondoPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -184,12 +186,15 @@ public class JFrameAdministrator extends javax.swing.JFrame {
 //        });
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel FondoAzul5;
     private javax.swing.JPanel FondoPanel5;
-    private javax.swing.JLabel Hospital_General5;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel lblBackLogin;
+    private javax.swing.JLabel lblBlue;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }

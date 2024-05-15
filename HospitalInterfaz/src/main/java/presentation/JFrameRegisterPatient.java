@@ -32,6 +32,8 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
         this.setTitle("Registro Paciente");
         Pintar imagen = new Pintar();
         imagen.PintarImagen(lblLogo, "src/main/java/Fotos/FondoLogin.jpg");
+        imagen.PintarImagen(lblFondo, "src/main/java/Fotos/pngtree-image-of-futuristic-medical-hospital-room-picture-image_2736851.jpg");
+
         imagen.PintarImagen(lblBlue, "src/main/java/Fotos/abstract-template-blue-background-white-squares-free-vector.jpg");
         imagen.PintarImagen(lblFondoRegister, "src/main/java/Fotos/abstract-blue-gradient-curved-shapes-on-white-background-free-vector.jpg");
     }
@@ -109,8 +111,10 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
         lblDate = new javax.swing.JLabel();
         Usuario12 = new javax.swing.JLabel();
         lblFondoRegister = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(900, 600));
 
         FondoPanel.setBackground(new java.awt.Color(255, 255, 255));
         FondoPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -342,6 +346,7 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
 
         FondoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(623, 220, 180, 70));
         FondoPanel.add(lblFondoRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 720, 360));
+        FondoPanel.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 830, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -550,6 +555,7 @@ public class JFrameRegisterPatient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBlue;
     private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblFondoRegister;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JTextField txtColony;
